@@ -23,7 +23,7 @@
 }
 
 :root:has(#theme [value="party-mode"]:checked) {
-  --base: rgb(170, 243, 252);
+  --base: rgb(117, 212, 224);
   --text: rgb(107, 0, 107);
 }
 
@@ -52,4 +52,6 @@ select {
 
 .description {
   font-style: italic;
+  max-width: 80ch;
+  line-height: 1.2;
 }
