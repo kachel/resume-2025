@@ -23,12 +23,13 @@
 }
 
 :root:has(#theme [value="party-mode"]:checked) {
-  --base: rgb(117, 212, 224);
-  --text: rgb(107, 0, 107);
+  --base: rgb(87, 0, 87);
+  --text: rgb(117, 212, 224);
 }
 
 html {
   color-scheme: dark light;
+  width: 100%;
 }
 
 body {
@@ -42,6 +43,17 @@ body {
 input,
 select {
   font: inherit;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 2rem;
+
+  footer {
+    border: dotted;
+    align-self: center;
+  }
 }
 
 .theme-changer-container {
