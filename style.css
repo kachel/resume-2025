@@ -1,5 +1,48 @@
+:root {
+  --base: #cfcfcf;
+  --text: #212121;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base: #212121;
+    --text: #cfcfcf;
+  }
+}
+
+html {
+  color-scheme: dark light;
+}
+
 body {
   padding: 1rem;
   font-family: "Consolas", monospace;
   font-size: 1.05rem;
+}
+
+:root:has(#theme [value="business-light"]:checked) {
+  color-scheme: light;
+  --base: #cfcfcf;
+  --text: #212121;
+}
+
+:root:has(#theme [value="business-dark"]:checked) {
+  color-scheme: dark;
+  --base: #212121;
+  --text: #cfcfcf;
+}
+
+:root:has(#theme [value="party-mode"]:checked) {
+  --base: rgb(170, 243, 252);
+  --text: rgb(107, 0, 107);
+}
+
+body {
+  color: var(--text);
+  background-color: var(--base);
+}
+
+input,
+select {
+  font: inherit;
 }
