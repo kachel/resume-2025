@@ -10,16 +10,6 @@
   }
 }
 
-html {
-  color-scheme: dark light;
-}
-
-body {
-  padding: 1rem;
-  font-family: "Consolas", monospace;
-  font-size: 1.05rem;
-}
-
 :root:has(#theme [value="business-light"]:checked) {
   color-scheme: light;
   --base: #cfcfcf;
@@ -37,12 +27,25 @@ body {
   --text: rgb(107, 0, 107);
 }
 
+html {
+  color-scheme: dark light;
+}
+
 body {
   color: var(--text);
   background-color: var(--base);
+  padding: 1rem;
+  font-family: "Consolas", monospace;
+  font-size: 1.05rem;
 }
 
 input,
 select {
   font: inherit;
+}
+
+.theme-changer-container {
+  text-align: end;
+  margin-inline: 1rem;
+  margin-block: 0.5rem;
 }
