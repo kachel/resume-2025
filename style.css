@@ -29,15 +29,20 @@
 
 html {
   color-scheme: dark light;
-  width: 100%;
+  max-width: 100%;
 }
 
 body {
   color: var(--text);
   background-color: var(--base);
-  padding: 1rem;
   font-family: "Consolas", monospace;
   font-size: 1.05rem;
+
+  padding-inline: 2rem;
+
+  @media (max-width: 600px) {
+    padding-inline: 0.5rem;
+  }
 }
 
 input,
@@ -48,7 +53,6 @@ select {
 .main-container {
   display: flex;
   flex-direction: column;
-  padding-inline: 2rem;
 
   footer {
     border: dotted;
@@ -62,8 +66,13 @@ select {
 
 .theme-changer-container {
   text-align: end;
-  margin-inline: 1rem;
-  margin-block: 0.5rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+
+  @media (max-width: 600px) {
+    padding-block: 0.25rem;
+    font-size: small;
+  }
 }
 
 .description {
