@@ -56,6 +56,10 @@ select {
   }
 }
 
+.about-container {
+  margin-bottom: 1rem;
+}
+
 .theme-changer-container {
   text-align: end;
   margin-inline: 1rem;
@@ -67,3 +71,5 @@ select {
   max-width: 80ch;
   line-height: 1.2;
 }
+
+/* todo: fix spacing */
