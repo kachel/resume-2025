@@ -84,6 +84,10 @@ select {
 .version-screenshot {
   max-height: 36rem;
   border: white 2px dotted;
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
 }
 
 .version-container {
