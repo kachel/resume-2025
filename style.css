@@ -81,4 +81,14 @@ select {
   line-height: 1.2;
 }
 
+.version-screenshot {
+  max-height: 36rem;
+  border: white 2px dotted;
+}
+
+.version-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 /* todo: fix spacing */
