@@ -1,11 +1,11 @@
 :root {
   --base: #cfcfcf;
-  --text: #212121;
+  --text: #1e1e1e;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --base: #212121;
+    --base: #1e1e1e;
     --text: #cfcfcf;
   }
 }
@@ -13,12 +13,12 @@
 :root:has(#theme [value="business-light"]:checked) {
   color-scheme: light;
   --base: #cfcfcf;
-  --text: #212121;
+  --text: #1e1e1e;
 }
 
 :root:has(#theme [value="business-dark"]:checked) {
   color-scheme: dark;
-  --base: #212121;
+  --base: #1e1e1e;
   --text: #cfcfcf;
 }
 
@@ -37,12 +37,13 @@ body {
   background-color: var(--base);
   font-family: "Consolas", monospace;
   font-size: 1.05rem;
-
   padding-inline: 2rem;
 
   @media (max-width: 600px) {
     padding-inline: 0.5rem;
   }
+
+  height: 100vh;
 }
 
 input,
