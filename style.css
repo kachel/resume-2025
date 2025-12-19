@@ -164,7 +164,16 @@ h1 {
 
 :root:has(#theme [value="party-mode"]:checked) {
   --base: rgb(87, 0, 87);
-  --text: rgb(117, 212, 224);
+  --text: rgb(101, 188, 199);
+
+  font-family: "DynaPuff", system-ui;
+
+  ul,
+  ol {
+    /* list-style-image: url("assets/party-mode-gifs/small-dancing-smiley.gif"); */
+    list-style: symbols(cyclic "🤍" "💙" "💚");
+    list-style-position: inside;
+  }
 
   .footer {
     background-color: hsl(from var(--base) h s 25%);
