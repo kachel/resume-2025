@@ -1,6 +1,138 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+ul,
+ol {
+  list-style: square;
+  list-style-position: inside;
+}
+
 :root {
   --base: #cfcfcf;
   --text: #1e1e1e;
+
+  --font-size-base: 1rem;
+  --font-size-lg: 1.333rem;
+  --font-size-xl: 1.777rem;
+  --font-size-xxl: 2.369rem;
+  --font-size-sm: 0.75rem;
+}
+
+@media (min-width: 960px) {
+  :root {
+    --font-size-base: 1rem;
+    --font-size-lg: 1.618rem;
+    --font-size-xl: 2.618rem;
+    --font-size-xxl: 4.236rem;
+    --font-size-sm: 0.75rem;
+  }
+}
+
+body {
+  font-size: var(--font-size-base);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,36 +146,40 @@
   color-scheme: light;
   --base: #cfcfcf;
   --text: #1e1e1e;
+
+  .footer {
+    background-color: hsl(from var(--base) h s 75%);
+  }
 }
 
 :root:has(#theme [value="business-dark"]:checked) {
   color-scheme: dark;
   --base: #1e1e1e;
   --text: #cfcfcf;
+
+  .footer {
+    background-color: hsl(from var(--base) h s 25%);
+  }
 }
 
 :root:has(#theme [value="party-mode"]:checked) {
   --base: rgb(87, 0, 87);
   --text: rgb(117, 212, 224);
+
+  .footer {
+    background-color: hsl(from var(--base) h s 25%);
+  }
 }
 
 html {
   color-scheme: dark light;
-  max-width: 100%;
+  height: 100vh;
+  font-family: "Consolas", monospace;
 }
 
 body {
   color: var(--text);
   background-color: var(--base);
-  font-family: "Consolas", monospace;
-  font-size: 1.05rem;
-  padding-inline: 2rem;
-
-  @media (max-width: 600px) {
-    padding-inline: 0.5rem;
-  }
-
-  height: 100vh;
 }
 
 input,
@@ -51,18 +187,37 @@ select {
   font: inherit;
 }
 
+.title {
+  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+}
+
 .main-container {
+  padding-inline: 2rem;
+  padding-block: 1rem;
   display: flex;
   flex-direction: column;
+}
 
-  footer {
-    border: dotted;
-    align-self: center;
+.about-container,
+.employment-history-container,
+.skills-container {
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+
+  li {
+    padding: 0.25rem;
   }
 }
 
-.about-container {
-  margin-bottom: 1rem;
+.skills,
+.job-description,
+.title {
+  padding-block: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.links {
+  padding-top: 0.5rem;
 }
 
 .theme-changer-container {
@@ -76,24 +231,24 @@ select {
   }
 }
 
-.description {
+.description,
+.job-description {
   font-style: italic;
-  max-width: 80ch;
-  line-height: 1.2;
+  font-size: var(--font-size-base);
 }
 
-.version-screenshot {
-  max-height: 36rem;
-  border: white 2px dotted;
+.footer {
+  width: 100%;
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
 
-  @media (max-width: 600px) {
-    max-width: 100%;
+  p {
+    text-align: center;
+    font-size: var(--font-size-sm);
   }
-}
-
-.version-container {
-  display: flex;
-  flex-flow: row wrap;
 }
 
 /* todo: fix spacing */
