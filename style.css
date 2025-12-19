@@ -239,12 +239,6 @@ select {
   line-height: 1.2;
 }
 
-.description {
-  @media (max-width: 600px) {
-    font-size: var(--font-size-sm);
-  }
-}
-
 .footer {
   width: 100%;
   margin-top: auto;
