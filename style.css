@@ -119,6 +119,12 @@ ol {
   }
 }
 
+@counter-style hearts {
+  system: cyclic;
+  symbols: "💗" "💙" "💚";
+  suffix: " ";
+}
+
 body {
   font-size: var(--font-size-base);
 }
@@ -171,7 +177,7 @@ h1 {
   ul,
   ol {
     /* list-style-image: url("assets/party-mode-gifs/small-dancing-smiley.gif"); */
-    list-style: symbols(cyclic "🤍" "💙" "💚");
+    list-style-type: hearts;
     list-style-position: inside;
   }
 
