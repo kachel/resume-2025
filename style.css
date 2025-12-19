@@ -180,7 +180,12 @@ h1 {
   letter-spacing: 1.05;
 
   .title {
-    background-image: linear-gradient(to right, #feac5e, #f8b9ff, #4bc0c8);
+    background-image: linear-gradient(
+      to right,
+      rgb(254, 172, 94),
+      rgb(227, 179, 227),
+      rgb(75, 192, 200)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
