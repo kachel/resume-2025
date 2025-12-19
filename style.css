@@ -187,8 +187,16 @@ select {
   font: inherit;
 }
 
-.title {
-  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+.theme-changer-container {
+  text-align: end;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+
+  @media (max-width: 600px) {
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    font-size: var(--font-size-sm);
+  }
 }
 
 .main-container {
@@ -196,6 +204,11 @@ select {
   padding-block: 1rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 600px) {
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+  }
 }
 
 .about-container,
@@ -210,31 +223,21 @@ select {
 }
 
 .skills,
-.job-description,
 .title {
   padding-block: 0.5rem;
   margin-top: 0.5rem;
 }
 
-.links {
-  padding-top: 0.5rem;
-}
-
-.theme-changer-container {
-  text-align: end;
-  padding-inline: 1rem;
+.links,
+.job-description {
   padding-block: 0.5rem;
-
-  @media (max-width: 600px) {
-    padding-block: 0.25rem;
-    font-size: small;
-  }
 }
 
 .description,
 .job-description {
   font-style: italic;
   font-size: var(--font-size-base);
+  line-height: 1.2;
 }
 
 .footer {
@@ -248,6 +251,10 @@ select {
   p {
     text-align: center;
     font-size: var(--font-size-sm);
+  }
+
+  @media (max-width: 600px) {
+    display: none;
   }
 }
 
