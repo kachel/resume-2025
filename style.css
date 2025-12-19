@@ -225,7 +225,6 @@ select {
 .skills,
 .title {
   padding-block: 0.5rem;
-  margin-top: 0.5rem;
 }
 
 .links,
@@ -238,6 +237,12 @@ select {
   font-style: italic;
   font-size: var(--font-size-base);
   line-height: 1.2;
+}
+
+.description {
+  @media (max-width: 600px) {
+    font-size: var(--font-size-sm);
+  }
 }
 
 .footer {
