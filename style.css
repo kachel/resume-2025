@@ -121,7 +121,7 @@ ol {
 
 @counter-style hearts {
   system: cyclic;
-  symbols: "💗" "💙" "💚";
+  symbols: "💙" "🧡" "💚";
   suffix: " ";
 }
 
@@ -172,17 +172,28 @@ h1 {
   --base: rgb(87, 0, 87);
   --text: rgb(101, 188, 199);
 
+  a {
+    color: rgb(227, 179, 227);
+  }
+
   font-family: "DynaPuff", system-ui;
+  letter-spacing: 1.05;
+
+  .title {
+    background-image: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
   ul,
   ol {
-    /* list-style-image: url("assets/party-mode-gifs/small-dancing-smiley.gif"); */
     list-style-type: hearts;
     list-style-position: inside;
   }
 
   .footer {
     background-color: hsl(from var(--base) h s 25%);
+    color: rgb(227, 179, 227);
   }
 }
 
