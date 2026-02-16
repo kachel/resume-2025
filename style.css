@@ -218,7 +218,10 @@ select {
 }
 
 .theme-changer-container {
-  @media (max-width: 600px) {
+  text-align: right;
+  padding: 0.5rem;
+
+  @media (min-width: 768px) {
     padding-inline: 2rem;
     padding-block: 1rem;
     font-size: var(--font-size-sm);
@@ -284,6 +287,8 @@ select {
 }
 
 header {
+  display: flex;
+  flex-direction: column-reverse;
   ul {
     list-style: none;
 
@@ -294,6 +299,7 @@ header {
 
   @media (min-width: 768px) {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding-inline: 2rem;
@@ -308,7 +314,11 @@ header {
 
 .menu-container {
   display: flex;
-  flex: row;
+
+  padding-inline: 0.25rem;
+  padding-block: 0.5rem;
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 768px) {
     padding-block: 1rem;
