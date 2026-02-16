@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kachel's Projects</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="assets/portrait.png" rel="icon" media="(prefers-color-scheme: light)" />
+    <link href="assets/portrait.png" rel="icon" media="(prefers-color-scheme: dark)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <nav class="menu">
+        <ul class="menu-container">
+          <li><a href="./index.html">Home</a></li>
+          <li>
+            <a id="contact" href="">Contact</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/kachel-wittig-1a81a325">LinkedIn</a>
+          </li>
+          <li>
+            <a href="https://github.com/kachel">Github</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="theme-changer-container">
+        <label>
+          Theme:
+          <select data-theme-picker name="themepicker" id="theme">
+            <option value="business-light">Business Light</option>
+            <option value="business-dark">Business Dark</option>
+            <option value="party-mode">Party Mode</option>
+          </select>
+        </label>
+      </div>
+    </header>
+    <main class="main-container">
+      <h2>Projects</h2>
+
+      <div class="grid-container">
+        <div class="grid">
+          <div>
+            <a href="https://mushroom-zone.netlify.app">Mushroom Zone</a>
+            <p>a website for a fictional mushroom hunting group</p>
+          </div>
+
+          <iframe
+            id="inlineFrameExample"
+            title="Mushroom Zone"
+            width="800"
+            height="600"
+            src="https://mushroom-zone.netlify.app"
+          >
+          </iframe>
+        </div>
+        <div class="grid">
+          <div>
+            <a href="https://chicago-ham-zone.netlify.app/">Ham Zone</a>
+            <p>a tool for a checking to see if a Chicagoland amateur radio net is happening</p>
+          </div>
+          <iframe
+            id="inlineFrameExample"
+            title="Ham Zone"
+            width="800"
+            height="600"
+            src="https://chicago-ham-zone.netlify.app/"
+          >
+          </iframe>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>kachel w. 2026</p>
+    </footer>
+  </body>
+</html>

@@ -153,7 +153,8 @@ h1 {
   --base: #cfcfcf;
   --text: #1e1e1e;
 
-  .footer {
+  .footer,
+  header {
     background-color: hsl(from var(--base) h s 75%);
   }
 }
@@ -163,7 +164,8 @@ h1 {
   --base: #1e1e1e;
   --text: #cfcfcf;
 
-  .footer {
+  .footer,
+  header {
     background-color: hsl(from var(--base) h s 25%);
   }
 }
@@ -178,14 +180,10 @@ h1 {
 
   font-family: "DynaPuff", system-ui;
   letter-spacing: 1.05;
+  font-size: smaller;
 
   .title {
-    background-image: linear-gradient(
-      to right,
-      rgb(254, 172, 94),
-      rgb(227, 179, 227),
-      rgb(75, 192, 200)
-    );
+    background-image: linear-gradient(to right, rgb(254, 172, 94), rgb(227, 179, 227), rgb(75, 192, 200));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -196,7 +194,8 @@ h1 {
     list-style-position: inside;
   }
 
-  .footer {
+  .footer,
+  header {
     background-color: hsl(from var(--base) h s 25%);
     color: rgb(227, 179, 227);
   }
@@ -219,10 +218,6 @@ select {
 }
 
 .theme-changer-container {
-  text-align: end;
-  padding-inline: 2rem;
-  padding-block: 1rem;
-
   @media (max-width: 600px) {
     padding-inline: 2rem;
     padding-block: 1rem;
@@ -288,4 +283,53 @@ select {
   }
 }
 
-/* todo: fix spacing */
+header {
+  ul {
+    list-style: none;
+
+    li {
+      padding-inline: 0.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+
+    ul {
+      li {
+        padding-inline: 0.5rem;
+      }
+    }
+  }
+}
+
+.menu-container {
+  display: flex;
+  flex: row;
+
+  @media (min-width: 768px) {
+    padding-block: 1rem;
+  }
+}
+
+.job-1 {
+  padding-bottom: 1rem;
+}
+
+.grid-container {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid > iframe {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: unset;
+  }
+}
