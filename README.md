@@ -5,3 +5,5 @@ click it!
 
 todo:
 hamburger menu for mobile (accessible)
+adjust link colors
+add fun cursor for party mode
