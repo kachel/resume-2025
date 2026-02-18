@@ -12,30 +12,45 @@
     <link href="/assets/font-awesome/css/brands.css" rel="stylesheet" />
     <link href="/assets/font-awesome/css/solid.css" rel="stylesheet" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+      rel="stylesheet"
+    />
+
     <script type="module" src="./script.js"></script>
     <!-- <script src="https://kit.fontawesome.com/d20b987249.js" crossorigin="anonymous"></script> -->
   </head>
   <body>
-    <header>
-      <div class="logo-container"></div>
-      <div class="links-container"></div>
-      <div class="theme-buttons-container"></div>
-    </header>
-    <main class="hero-container">
+    <div class="header box">
+      <div class="logo-container"><i class="fa-solid fa-person-digging"></i></div>
+      <div class="links-theme-container">
+        <div>
+          <ul class="links-container">
+            <li><a href="#about-me">About me</a></li>
+            <li><a href="" id="contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="theme-buttons-container">
+          <button class="icon-button"><i class="fa-solid fa-building"></i></button>
+          <button class="icon-button"><i class="fa-solid fa-glasses"></i></button>
+        </div>
+      </div>
+    </div>
+    <main class="hero-container box">
       <div class="hero-info">
         <p>Hello, my name is Kachel</p>
-        <h1>Front-end engineer with a splash of design</h1>
-        <p>
-          I enjoy the liminal space between design and code. I'm passionate about accessibility, design systems, and
-          user joy 💜
-        </p>
+        <h1>Front-end developer with soft spot for CSS</h1>
+        <p>I'm passionate about accessibility, design systems, and user joy 💜</p>
+        <p>Most comfortable in the liminal space between design and code</p>
         <button class="button">Download CV</button>
       </div>
       <div class="hero-image">
         <img src="assets/images/portrait.jpg" alt="" />
       </div>
     </main>
-    <div class="projects">
+    <div class="projects box">
       <h2>Projects</h2>
       <div class="projects-container">
         <div class="project-card">
@@ -51,7 +66,7 @@
         </div>
       </div>
     </div>
-    <div class="about-me-container">
+    <div class="about-me-container box">
       <div class="about-me-images">
         <img src="" alt="" />
       </div>
@@ -69,17 +84,34 @@
         </p>
       </div>
     </div>
-    <div class="skills-container">
-      <div class="skills-grid"></div>
+    <div class="skills-container box">
+      <div class="skills-grid">
+        <ul>
+          <li><i class="fa-brands fa-square-js"></i>JavaScript</li>
+          <li><i class="fa-brands fa-css"></i>CSS</li>
+          <li><i class="fa-brands fa-html5"></i>HTML</li>
+          <li><i class="fa-brands fa-square-git"></i>Git</li>
+          <li><i class="fa-brands fa-square-figma"></i>Figma</li>
+          <li><i class="fa-brands fa-tailwind-css"></i>Tailwind</li>
+          <li><i class="fa-solid fa-droplet"></i>Elixir</li>
+          <li><i class="fa-brands fa-phoenix-framework"></i>Phoenix</li>
+          <li><i class="fa-brands fa-node"></i>Node</li>
+          <li><i class="fa-solid fa-robot"></i>AI Assisted Coding</li>
+        </ul>
+      </div>
     </div>
-    <footer>
+    <footer class="box">
       <h4>Let's connect!</h4>
       <div class="footer-info">
         <p>Shoot me a message</p>
         <div class="brand-icon-buttons-container">
-          <button class="icon-button linkedin"><i class="fa-brands fa-linkedin"></i></button>
+          <button class="icon-button linkedin">
+            <i class="fa-brands fa-linkedin"></i>
+          </button>
           <button class="icon-button"><i class="fa-brands fa-square-github"></i></button>
-          <button class="icon-button email"><i class="fa-solid fa-envelope"></i></button>
+          <button class="icon-button">
+            <a href="" id="contact"><i class="fa-solid fa-envelope"></i></a>
+          </button>
         </div>
       </div>
     </footer>

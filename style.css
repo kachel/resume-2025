@@ -95,6 +95,7 @@ video {
 :root {
   --base: #cfcfcf;
   --text: #1e1e1e;
+  --border: #1e1e1e;
 
   --font-size-base: 1rem;
   --font-size-lg: 1.333rem;
@@ -112,7 +113,76 @@ video {
     --font-size-sm: 0.75rem;
   }
 }
-
+/* fix me */
 img {
   width: 25%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  color: var(--text);
+  a {
+    color: var(--text);
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
+
+  @media (min-width: 768px) {
+    justify-content: space-between;
+    padding-inline: 4rem;
+    padding-block: 1rem;
+  }
+}
+
+.links-theme-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: row;
+
+  @media (min-width: 768px) {
+    li {
+      padding-inline: 1rem;
+    }
+  }
+}
+
+/* component */
+.icon-button {
+  padding: 0.5rem 0.5rem;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    .hero-info {
+      border-right: var(--border) 2px solid;
+    }
+  }
+}
+
+.box {
+  border: var(--border) 2px solid;
+}
+
+.box + .box {
+  border-top: none;
 }
