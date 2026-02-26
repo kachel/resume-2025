@@ -23,7 +23,7 @@
     <!-- <script src="https://kit.fontawesome.com/d20b987249.js" crossorigin="anonymous"></script> -->
   </head>
   <body>
-    <div class="header box">
+    <header class="header">
       <div class="logo-container"><i class="fa-solid fa-person-digging"></i></div>
       <div class="links-theme-container">
         <div>
@@ -37,70 +37,80 @@
           <button class="icon-button"><i class="fa-solid fa-glasses"></i></button>
         </div>
       </div>
-    </div>
-    <main class="hero-container box">
-      <div class="hero-info">
-        <p>Hello, my name is Kachel</p>
-        <h1>Front-end developer with soft spot for CSS</h1>
-        <p>I'm passionate about accessibility, design systems, and user joy 💜</p>
-        <p>Most comfortable in the liminal space between design and code</p>
-        <button class="button">Download CV</button>
-      </div>
-      <div class="hero-image">
-        <img src="assets/images/portrait.jpg" alt="" />
-      </div>
-    </main>
-    <div class="projects box">
-      <h2>Projects</h2>
-      <div class="projects-container">
-        <div class="project-card">
-          <h3>Mushroom Zone</h3>
-          <p>a<a href="https://mushroom-zone.netlify.app">website</a> for a fictional mushroom hunting group</p>
+    </header>
+    <main class="main">
+      <div class="hero-container box">
+        <div class="hero-info">
+          <p class="medium-text">Hello, my name is Kachel!</p>
+          <h1>
+            <span class="accent-1">Front-end developer</span> with soft spot for <span class="accent-2">Styling</span>
+          </h1>
+          <div class="details">
+            <p>I'm passionate about accessibility, design systems, and user joy 💜</p>
+            <p>Most comfortable in the liminal space between design and code</p>
+          </div>
+          <button class="btn">Download CV</button>
         </div>
-        <div class="project-card">
-          <h3>Ham Zone</h3>
+        <div class="hero-image">
+          <div><img src="assets/images/portrait.jpg" alt="" /></div>
+        </div>
+      </div>
+      <div class="project-container box">
+        <div class="projects-container">
+          <h2>Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <h3>Mushroom Zone</h3>
+              <p>a<a href="https://mushroom-zone.netlify.app">website</a> for a fictional mushroom hunting group</p>
+            </div>
+            <div class="project-card">
+              <h3>Ham Zone</h3>
+              <p>
+                a<a href="https://chicago-ham-zone.netlify.app/">tool</a> for a checking to see if a Chicagoland amateur
+                radio net is happening
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-me-container box">
+        <div class="about-me-images">
+          <img src="" alt="" />
+        </div>
+        <div class="about-me-info">
+          <h2>About me</h2>
           <p>
-            a<a href="https://chicago-ham-zone.netlify.app/">tool</a> for a checking to see if a Chicagoland amateur
-            radio net is happening
+            Fun fact: I'm probably the only Kachel that you have met! It is pronounced like Rachel but with a 'K'. When
+            I am not pushing pixels for work, I like to look up at birds and satellites.
+          </p>
+          <p>
+            I enjoy bird watching at the local park. My favorite bird at the moment? American Kestrel aka North
+            America's smallest raptor. My other hobby, ham radio, includes me building antennas, programming radios, and
+            hosting brunches where I teach my friends about the wonderful world of radio frequencies! One day, it is my
+            hope to make a contact with the International Space Station.
           </p>
         </div>
       </div>
-    </div>
-    <div class="about-me-container box">
-      <div class="about-me-images">
-        <img src="" alt="" />
+      <div class="skills-container box">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <ul>
+            <li><i class="fa-brands fa-square-js"></i>JavaScript</li>
+            <li><i class="fa-brands fa-css"></i>CSS</li>
+            <li><i class="fa-brands fa-html5"></i>HTML</li>
+            <li><i class="fa-brands fa-square-git"></i>Git</li>
+            <li><i class="fa-brands fa-square-figma"></i>Figma</li>
+            <li><i class="fa-brands fa-tailwind-css"></i>Tailwind</li>
+            <li><i class="fa-solid fa-droplet"></i>Elixir</li>
+            <li><i class="fa-brands fa-phoenix-framework"></i>Phoenix</li>
+            <li><i class="fa-brands fa-node"></i>Node</li>
+            <li><i class="fa-solid fa-robot"></i>AI Assisted Coding</li>
+          </ul>
+        </div>
       </div>
-      <div class="about-me-info">
-        <h2>About me</h2>
-        <p>
-          Fun fact: I'm probably the only Kachel that you have met! It is pronounced like Rachel but with a 'K'. When I
-          am not pushing pixels for work, I like to look up at birds and satellites.
-        </p>
-        <p>
-          I enjoy bird watching at the local park. My favorite bird at the moment? American Kestrel aka North America's
-          smallest raptor. My other hobby, ham radio, includes me building antennas, programming radios, and hosting
-          brunches where I teach my friends about the wonderful world of radio frequencies! One day, it is my hope to
-          make a contact with the International Space Station.
-        </p>
-      </div>
-    </div>
-    <div class="skills-container box">
-      <div class="skills-grid">
-        <ul>
-          <li><i class="fa-brands fa-square-js"></i>JavaScript</li>
-          <li><i class="fa-brands fa-css"></i>CSS</li>
-          <li><i class="fa-brands fa-html5"></i>HTML</li>
-          <li><i class="fa-brands fa-square-git"></i>Git</li>
-          <li><i class="fa-brands fa-square-figma"></i>Figma</li>
-          <li><i class="fa-brands fa-tailwind-css"></i>Tailwind</li>
-          <li><i class="fa-solid fa-droplet"></i>Elixir</li>
-          <li><i class="fa-brands fa-phoenix-framework"></i>Phoenix</li>
-          <li><i class="fa-brands fa-node"></i>Node</li>
-          <li><i class="fa-solid fa-robot"></i>AI Assisted Coding</li>
-        </ul>
-      </div>
-    </div>
-    <footer class="box">
+    </main>
+
+    <footer class="footer">
       <h4>Let's connect!</h4>
       <div class="footer-info">
         <p>Shoot me a message</p>
@@ -111,6 +121,9 @@
           <button class="icon-button"><i class="fa-brands fa-square-github"></i></button>
           <button class="icon-button">
             <a href="" id="contact"><i class="fa-solid fa-envelope"></i></a>
+          </button>
+          <button class="icon-button">
+            <a href="https://codepen.io/kachel-the-decoder"><i class="fa-brands fa-codepen"></i></a>
           </button>
         </div>
       </div>
