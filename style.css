@@ -210,7 +210,7 @@ button {
   font-size: var(--font-size-base);
   color: inherit;
   font-family: var(--ff);
-  background: var(--color-accent);
+  background-color: rgba(255, 255, 255, 0.35);
   border-radius: var(--border-radius);
   border: 2px solid var(--color-text);
   padding: 0.25rem 0.5rem;
@@ -304,7 +304,7 @@ button:is(:hover, :focus-visible) {
 .hero-image {
   display: grid;
   place-content: center;
-  padding: var(--padding-lg);
+  padding: 48px;
 }
 
 /* PROJECT */
@@ -320,6 +320,7 @@ button:is(:hover, :focus-visible) {
     text-align: center;
     padding-bottom: var(--padding-md);
     font-size: var(--font-size-xl);
+    font-weight: 500;
   }
 }
 
@@ -329,9 +330,9 @@ button:is(:hover, :focus-visible) {
   grid-template-columns: 1fr;
 
   h3 {
-    text-align: center;
     padding-bottom: var(--padding-sm);
     font-size: var(--font-size-lg);
+    font-weight: 500;
   }
 
   @media (min-width: 768px) {
@@ -340,7 +341,16 @@ button:is(:hover, :focus-visible) {
 }
 
 .project-card {
-  padding: varrvar(--padding-md);
+  background-color: rgba(255, 255, 255, 0.35);
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--color-text);
+  box-shadow: 7px 6px 0 0 var(--color-text);
+  margin-bottom: var(--padding-sm);
+
+  p {
+    max-width: 65ch;
+  }
 }
 
 /* ABOUT ME */
@@ -356,6 +366,7 @@ button:is(:hover, :focus-visible) {
     text-align: center;
     padding-bottom: var(--padding-md);
     font-size: var(--font-size-xl);
+    font-weight: 500;
   }
 
   p {
@@ -375,6 +386,7 @@ button:is(:hover, :focus-visible) {
     text-align: center;
     padding-bottom: var(--padding-md);
     font-size: var(--font-size-xl);
+    font-weight: 500;
   }
 
   ul > li {
@@ -402,6 +414,7 @@ button:is(:hover, :focus-visible) {
     text-align: center;
     padding-bottom: var(--padding-sm);
     font-size: var(--font-size-lg);
+    font-weight: 500;
   }
 }
 
@@ -417,6 +430,7 @@ button:is(:hover, :focus-visible) {
     text-align: center;
     padding-bottom: var(--padding-sm);
     font-size: var(--font-size-xl);
+    font-weight: 500;
   }
 
   p {
