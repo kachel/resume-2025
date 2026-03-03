@@ -15,8 +15,11 @@ document.getElementById("downloadCV").addEventListener("click", function () {
 // EMAIL DECRYPT
 
 const encEmail = "a2p3aXR0aWdAZ21haWwuY29t";
-const form = document.getElementById("contact");
-form.setAttribute("href", "mailto:".concat(atob(encEmail)));
+const forms = document.querySelectorAll(".contact");
+
+forms.forEach((form) => {
+  form.setAttribute("href", "mailto:".concat(atob(encEmail)));
+});
 
 // THEME SWITCHER
 const pressedButtonSelector = '[data-theme][aria-pressed="true"]';
