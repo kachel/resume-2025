@@ -348,10 +348,13 @@ sup {
 
 .projects-container {
   h2 {
-    text-align: center;
     padding-bottom: var(--padding-md);
     font-size: var(--font-size-xl);
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      text-align: center;
+    }
   }
 }
 
@@ -394,10 +397,13 @@ sup {
 
 .about-me-info {
   h2 {
-    text-align: center;
     padding-bottom: var(--padding-md);
     font-size: var(--font-size-xl);
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      text-align: center;
+    }
   }
 
   p {
@@ -415,10 +421,13 @@ sup {
   place-content: center;
 
   h2 {
-    text-align: center;
     padding-bottom: var(--padding-md);
     font-size: var(--font-size-xl);
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      text-align: center;
+    }
   }
 
   ul > li {
@@ -443,10 +452,13 @@ sup {
   padding: var(--padding-lg);
 
   h3 {
-    text-align: center;
     padding-bottom: var(--padding-sm);
     font-size: var(--font-size-lg);
     font-weight: 500;
+
+    @media (min-width: 768px) {
+      text-align: center;
+    }
   }
 }
 
@@ -486,8 +498,11 @@ sup {
   }
 }
 
-.brand-icon-buttons-container button.icon-button {
-  font-size: 24px;
+.brand-icon-buttons-container {
+  margin-block: 0.25rem;
+  button.icon-button {
+    font-size: 24px;
+  }
 }
 
 /* BORDERS */
