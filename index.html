@@ -24,7 +24,9 @@
   </head>
   <body>
     <header class="header">
-      <div class="logo-container"><img class="icon" src="./assets/icon.png" alt="" /></div>
+      <div class="logo-container">
+        <!-- <img class="logo" src="./assets/union.svg" alt="" /> -->
+      </div>
       <div class="links-theme-container">
         <div>
           <ul class="links-container">
@@ -43,7 +45,7 @@
             <p>I'm passionate about accessibility, design systems, and user joy 💜</p>
             <p>Most comfortable working in the space between design and code</p>
           </div>
-          <button class="btn">Download CV</button>
+          <button class="button">Download CV</button>
         </div>
       </div>
       <div class="project-container box">
@@ -97,10 +99,10 @@
       <div class="switcher-container box">
         <h3>Pick a theme</h3>
         <div class="theme-switcher">
-          <button aria-pressed="true">Green</button>
-          <button aria-pressed="false">Blue</button>
-          <button aria-pressed="false">Pink</button>
-          <button aria-pressed="false">Orange</button>
+          <button class="theme-button" data-theme="green" aria-pressed="true">Green</button>
+          <button class="theme-button" data-theme="blue" aria-pressed="false">Blue</button>
+          <button class="theme-button" data-theme="pink" aria-pressed="false">Pink</button>
+          <button class="theme-button" data-theme="orange" aria-pressed="false">Orange</button>
         </div>
       </div>
     </main>
@@ -109,17 +111,17 @@
       <h2>Let's connect!</h2>
       <div class="footer-info">
         <p>Shoot me a message</p>
-        <div class="brand-icon-btns-container">
-          <button class="icon-btn linkedin">
+        <div class="brand-icon-buttons-container">
+          <button class="icon-button linkedin">
             <a href="https://www.linkedin.com/in/kachel-wittig-1a81a325/"><i class="fa-brands fa-linkedin"></i></a>
           </button>
-          <button class="icon-btn">
+          <button class="icon-button">
             <a href="https://github.com/kachel"><i class="fa-brands fa-square-github"></i></a>
           </button>
-          <button class="icon-btn">
+          <button class="icon-button">
             <a href="" id="contact"><i class="fa-solid fa-envelope"></i></a>
           </button>
-          <button class="icon-btn">
+          <button class="icon-button">
             <a href="https://codepen.io/kachel-the-decoder"><i class="fa-brands fa-codepen"></i></a>
           </button>
         </div>
