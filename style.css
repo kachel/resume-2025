@@ -287,19 +287,13 @@ button,
 /* HERO */
 
 .hero-container {
-  display: grid;
-  place-content: center;
   padding: var(--padding-lg);
 
   h1 {
     font-size: var(--font-size-xxl);
-  }
-
-  .btn {
-    align-self: center;
 
     @media (min-width: 768px) {
-      width: fit-content;
+      text-align: center;
     }
   }
 
@@ -310,22 +304,25 @@ button,
 
   p {
     font-size: var(--font-size-lg);
+    line-height: 1.6;
   }
 
-  @media (min-width: 768px) {
-    text-align: center;
+  p span {
+    font-weight: 500;
   }
 }
 
 .hero-info {
+  display: grid;
+  place-content: center;
   .medium-text {
     font-size: var(--font-size-xl);
   }
-}
 
-sup {
-  vertical-align: super;
-  font-size: var(--font-size-base);
+  button {
+    width: fit-content;
+    margin: auto;
+  }
 }
 
 #downloadCV {
