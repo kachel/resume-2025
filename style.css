@@ -216,7 +216,7 @@ button,
   background-color: var(--transparent);
   border-radius: var(--border-radius);
   border: 2px solid var(--color-text);
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 .icon-button i {
