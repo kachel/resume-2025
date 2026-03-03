@@ -1,126 +1,137 @@
-<html lang="en">
+<html lang="en" data-selected-theme="blue">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kachel's Resume</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
 
-    <link href="assets/portrait.png" rel="icon" media="(prefers-color-scheme: light)" />
-    <link href="assets/portrait.png" rel="icon" media="(prefers-color-scheme: dark)" />
+    <link href="assets/images/icon.png" rel="icon" media="(prefers-color-scheme: light)" />
+    <link href="assets/images/icon.png" rel="icon" media="(prefers-color-scheme: dark)" />
 
     <link href="/assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
     <link href="/assets/font-awesome/css/brands.css" rel="stylesheet" />
     <link href="/assets/font-awesome/css/solid.css" rel="stylesheet" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+      rel="stylesheet"
+    />
+
     <script type="module" src="./script.js"></script>
     <!-- <script src="https://kit.fontawesome.com/d20b987249.js" crossorigin="anonymous"></script> -->
   </head>
   <body>
-    <header>
-      <nav>
-        <button id="menu-button" aria-haspopup="true" aria-expanded="false" hidden>Menu</button>
-        <ul class="menu-container" id="menu-list">
-          <li><a href="./projects.html">Projects</a></li>
-          <li>
-            <a id="contact" href="">Contact</a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/kachel-wittig-1a81a325">LinkedIn</a>
-          </li>
-          <li>
-            <a href="https://github.com/kachel">Github</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="theme-changer-container">
-        <label>
-          Theme:
-          <select data-theme-picker name="themepicker" id="theme">
-            <option value="business-light">Business Light</option>
-            <option value="business-dark">Business Dark</option>
-            <option value="party-mode">Party Mode</option>
-          </select>
-        </label>
+    <header class="header">
+      <div class="logo-container">
+        <!-- <img class="logo" src="./assets/union.svg" alt="" /> -->
+      </div>
+      <div class="links-theme-container">
+        <div>
+          <ul class="links-container">
+            <li><a href="#about-me">About me</a></li>
+            <li><a href="" class="contact">Contact</a></li>
+          </ul>
+        </div>
       </div>
     </header>
-
-    <main class="main-container">
-      <div class="about-container">
-        <h1 class="title">KACHEL W.</h1>
-        <p class="description">
-          Front-end developer with 6 years of experience. I’m passionate about accessibility, design systems, and user
-          joy.
-        </p>
-      </div>
-
-      <div class="employment-history-container">
-        <h2 class="title">EMPLOYMENT HISTORY</h2>
-        <div class="job-1">
-          <div class="job-description">
-            Front-End Developer @ NFI (National Freight Industries) | April 2019 – September 2025
+    <main class="main">
+      <div class="hero-container box">
+        <div class="hero-info">
+          <p class="medium-text">Hello, my name is <span class="accent-1">Kachel</span></p>
+          <h1><span>Front-end dev</span> with soft spot for <span class="accent-2">CSS</span></h1>
+          <div class="details">
+            <p>I'm passionate about accessibility, design systems, and user joy 💜</p>
+            <p>Most comfortable working in the space between design and code</p>
           </div>
-
-          <ul>
-            <li>&nbsp;Designed and prototyped web components in Figma and then implemented 1:1 in production code</li>
-            <li>
-              Collaborated with designers and engineers on design system UI upgrades to transportation management
-              software
-            </li>
-            <li>
-              Led workshops with product and engineering teams to translate design decisions and improve buy-in across
-              multiple stakeholders
-            </li>
-            <li>&nbsp;Successfully implemented WGAG 2.1 accessibility standards in design system components</li>
-            <li>&nbsp;Collaborated daily on maintaining resilient event-driven system architecture</li>
-            <li>
-              Reduced the total number of UI colors from 56 hex coded colors to 19 semantically named variable colors
-            </li>
-          </ul>
-        </div>
-        <div class="job-2">
-          <div class="job-description">
-            Exports Lead / Business Development Coordinator @ Trade Associates Group | May 2016 – September 2017
-          </div>
-          <ul>
-            <li>
-              Automated 50% of job responsibilities with a process for generating product catalogs and trained sales
-              department on usage
-            </li>
-            <li>&nbsp;Managed partnership and sales liaisons as international trade show lead</li>
-            <li>
-              Oversaw international business relations: their claims and disputes, purchase orders, and back orders to
-              ensure customer satisfaction
-            </li>
-            <li>&nbsp;Synthesized monthly sales data as graphs and reports for quarterly board review</li>
-          </ul>
+          <button class="button" aria-label="download cv" id="downloadCV">Download CV</button>
         </div>
       </div>
-
-      <div class="skills-container">
-        <h2 class="title">SKILLS</h2>
-        <div class="skills">
-          Elixir, Phoenix, LiveView, JavaScript, Node, Vite, HTML, CSS, Figma, Git, AI-assisted code generation
+      <div class="project-container box">
+        <div class="projects-container">
+          <h2>Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <h3>Mushroom Zone</h3>
+              <p>A <a href="https://mushroom-zone.netlify.app">website</a> for a fictional mushroom hunting group</p>
+            </div>
+            <div class="project-card">
+              <h3>Ham Zone</h3>
+              <p>
+                A <a href="https://chicago-ham-zone.netlify.app/">tool</a> for a checking to see if a Chicagoland
+                amateur radio net is happening
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="about-me-container box" id="about-me">
+        <div class="about-me-images">
+          <img src="" alt="" />
+        </div>
+        <div class="about-me-info">
+          <h2>About me</h2>
+          <p>When I am not pushing pixels for work, I like to look up! At satellites or birds.</p>
+          <p>
+            I enjoy bird watching. My favorite bird at the moment? The American Kestrel aka North America's smallest
+            raptor.
+          </p>
+          <p>
+            My other hobby, ham radio, has got me building antennas and programming transceivers. One day, I hope to
+            make contact with the International Space Station.
+          </p>
+        </div>
+      </div>
+      <div class="skills-container box">
+        <h2>Skills</h2>
 
-        <h3 class="title">AWARDS / CERTIFICATES</h3>
-        <ul>
-          <li>&nbsp;Women Who Code Bootcamp Scholarship 2018</li>
-          <li>&nbsp;Project Alloy Grantee 2017, 2018</li>
-          <li>&nbsp;RubyConf Scholar 2018</li>
-          <li>&nbsp;Dribbble, Scaling Design Systems Certificate 2023</li>
-          <li>&nbsp;DeQue University Disabilities, Guidelines, and Laws Certificate 2024</li>
-          <li>&nbsp;General License Amateur Radio ARRL (KD9KUU)</li>
+        <ul class="skills-grid">
+          <li><i class="fa-brands fa-square-js"></i>JavaScript</li>
+          <li><i class="fa-brands fa-css"></i>CSS</li>
+          <li><i class="fa-brands fa-html5"></i>HTML</li>
+          <li><i class="fa-brands fa-square-git"></i>Git</li>
+          <li><i class="fa-brands fa-square-figma"></i>Figma</li>
+          <li><i class="fa-brands fa-tailwind-css"></i>Tailwind</li>
+          <li><i class="fa-solid fa-droplet"></i>Elixir</li>
+          <li><i class="fa-brands fa-phoenix-framework"></i>Phoenix</li>
+          <li><i class="fa-brands fa-node"></i>Node</li>
+          <li><i class="fa-solid fa-robot"></i>AI Assisted Coding</li>
         </ul>
-
-        <h3 class="title">EDUCATION</h3>
-        <ul>
-          <li>&nbsp;Flatiron School | Ruby on Rails and JavaScript online program 2019</li>
-          <li>&nbsp;Kalamazoo College | International Studies, Chinese (Mandarin) September 2007 - March 2012</li>
-        </ul>
+      </div>
+      <div class="switcher-container box">
+        <h3>Pick a theme</h3>
+        <div class="theme-switcher">
+          <button class="theme-button" data-theme="green" aria-pressed="true">Green</button>
+          <button class="theme-button" data-theme="blue" aria-pressed="false">Blue</button>
+          <button class="theme-button" data-theme="purple" aria-pressed="false">Purple</button>
+          <button class="theme-button" data-theme="orange" aria-pressed="false">Orange</button>
+        </div>
       </div>
     </main>
+
     <footer class="footer">
-      <p>kachel w. 2026</p>
+      <h2>Let's connect!</h2>
+      <div class="footer-info">
+        <p>Shoot me a message or see my stuff</p>
+
+        <div class="brand-icon-buttons-container">
+          <a href="" aria-label="contact" class="icon-button contact"
+            ><i class="fa-solid fa-envelope" aria-hidden="true"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/kachel-wittig-1a81a325/" aria-label="linkedin" class="icon-button"
+            ><i class="fa-brands fa-linkedin" aria-hidden="true"></i
+          ></a>
+
+          <a href="https://github.com/kachel" aria-label="github" class="icon-button"
+            ><i class="fa-brands fa-square-github" aria-hidden="true"></i
+          ></a>
+
+          <a href="https://codepen.io/kachel-the-decoder" aria-label="codepen" class="icon-button"
+            ><i class="fa-brands fa-codepen" aria-hidden="true"></i
+          ></a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
