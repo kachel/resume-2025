@@ -118,7 +118,7 @@ video {
 */
 
 :root {
-  --border-radius: 4px;
+  --border-radius: 2px;
 
   --font-size-sm: 0.75rem;
   --font-size-base: 1rem;
@@ -208,7 +208,8 @@ a:is(:hover, :focus-visible) {
   text-decoration-thickness: 4px;
 }
 
-button {
+button,
+.icon-button {
   font-size: var(--font-size-base);
   color: inherit;
   font-family: var(--ff);
@@ -216,6 +217,10 @@ button {
   border-radius: var(--border-radius);
   border: 2px solid var(--color-text);
   padding: 0.25rem 0.5rem;
+}
+
+.icon-button i {
+  vertical-align: middle;
 }
 
 .button:hover,
@@ -253,7 +258,6 @@ button {
 }
 
 .accent-2 {
-  background: var(--cyan);
   transform: rotate(4deg);
 } */
 
@@ -462,6 +466,10 @@ button {
   p {
     padding-bottom: var(--padding-sm);
   }
+}
+
+.brand-icon-buttons-container button.icon-button {
+  font-size: 24px;
 }
 
 /* BORDERS */
