@@ -157,7 +157,7 @@ video {
 [data-selected-theme="blue"] {
   --color-background: #63b4ff;
   --color-text: #202f39;
-  --color-accent: #4c9eea;
+  --color-accent: #2c96f9;
   --ff: "Bricolage Grotesque", sans-serif;
 }
 
@@ -241,7 +241,7 @@ button,
   justify-content: space-between;
   padding: var(--padding-md) var(--padding-lg);
   border: 2px solid var(--color-text);
-  border-bottom: none;
+  background: var(--transparent);
 }
 
 .logo {
@@ -466,13 +466,13 @@ sup {
 /* FOOTER */
 
 .footer {
+  background: var(--transparent);
   padding: var(--padding-lg);
   display: grid;
   place-content: center;
   text-align: center;
 
   border: 2px solid var(--color-text);
-  border-top: none;
 
   h2 {
     text-align: center;
@@ -491,11 +491,11 @@ sup {
 }
 
 /* BORDERS */
-
+/* 
 .box {
   border: var(--color-text) 2px solid;
 }
 
 .box + .box {
   border-top: none;
-}
+} */
