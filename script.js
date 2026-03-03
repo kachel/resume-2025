@@ -23,7 +23,7 @@ forms.forEach((form) => {
 
 // THEME SWITCHER
 const pressedButtonSelector = '[data-theme][aria-pressed="true"]';
-const defaultTheme = "green";
+const defaultTheme = "blue";
 
 const applyTheme = (theme) => {
   const target = document.querySelector(`[data-theme="${theme}"]`);
