@@ -472,6 +472,16 @@ button,
   box-shadow: 0 0 0 2px var(--color-text) inset;
 }
 
+.theme-switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
+
+  @media (min-width: 786px) {
+    display: flex;
+  }
+}
+
 /* FOOTER */
 
 .footer {
@@ -496,15 +506,16 @@ button,
 }
 
 .brand-icon-buttons-container {
-  margin-block: 0.25rem;
+  margin-block: 1rem;
   button.icon-button {
     font-size: 24px;
   }
 }
 
 /* BORDERS */
-/* 
-.box {
+
+/* .box {
+  
   border: var(--color-text) 2px solid;
 }
 
