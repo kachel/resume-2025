@@ -315,11 +315,15 @@ button,
   }
 }
 
-.hero-image {
+#downloadCV {
+  margin-top: var(--padding-sm);
+}
+
+/* .hero-image {
   display: grid;
   place-content: center;
   padding: 48px;
-}
+} */
 
 /* PROJECT */
 
