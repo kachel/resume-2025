@@ -1,0 +1,210 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/ */
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  /* https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html */
+  [role="list"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-block-size: 100vh;
+    line-height: 1.6;
+  }
+
+  /* pull that line height down for the buttons, makes adding padding nicer */
+  h1,
+  h2,
+  h3,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
+
+  /* typography touch to make headers balanced, prevents one word lines */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  /* typography touch to prevent text orphans in paragraphs */
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  img,
+  picture {
+    /* same as max-width ^^ */
+    max-inline-size: 100%;
+    display: block;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+:root {
+  --accent: blue;
+}
+
+html {
+  font-family: "Bricolage Grotesque", sans-serif;
+  letter-spacing: 0.2rem;
+  font-size: 18px;
+  background-color: black;
+  min-height: 100vh;
+  background-image: url(assets/images/stars3.gif);
+}
+
+.links {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+
+  @media (width < 760px) {
+    gap: 1rem;
+  }
+}
+
+.link {
+  background: white;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 2rem 1.5rem;
+  opacity: 0.8;
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 3rem;
+  border: inset 5px;
+  margin-inline: 0.5rem;
+
+  @media (width < 720px) {
+    font-size: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    margin-inline: 0.5rem;
+    border: inset 2px;
+  }
+}
+
+.link:hover,
+.link:focus-visible {
+  background-color: var(--accent);
+  color: white;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background: black;
+  background-image: url(assets/images/ud1.gif);
+  color: rgb(232, 230, 230);
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  padding-block: 1.5rem;
+  @media (width < 760px) {
+    gap: 0.5rem;
+    padding-block: 1rem;
+  }
+}
+.wrapper {
+  margin: auto;
+  max-width: 1330px;
+  margin-bottom: 2rem;
+}
+.icons {
+  color: white;
+}
+.portrait {
+  background-color: black;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: inset var(--accent) 5px;
+  margin: auto;
+  @media (width < 760px) {
+    width: 150px;
+    height: 150px;
+  }
+}
+.icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+  padding-block: 1.5rem;
+
+  @media (width < 760px) {
+    gap: 2rem;
+  }
+}
+
+.icon {
+  opacity: 0.7;
+  height: 100px;
+  width: 100px;
+
+  @media (width < 760px) {
+    height: 65px;
+    width: 65px;
+  }
+}
+.icon:hover,
+.icon:focus-visible {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.title {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 700;
+  text-shadow: 5px 5px rgb(32, 32, 186);
+  @media (width < 760px) {
+    font-size: 3rem;
+  }
+}
+.footer {
+  text-align: center;
+  color: lightgray;
+  margin-block: 3rem;
+}
