@@ -464,11 +464,11 @@ button,
   color: var(--color-background);
 }
 
-.theme-button[aria-pressed="true"]:is(:hover, :focus) {
+.theme-button[aria-pressed="true"]:is(:hover, :focus-visible) {
   box-shadow: 0 0 0 2px var(--color-background) inset;
 }
 
-.theme-button:is(:hover, :focus) {
+.theme-button:is(:hover, :focus-visible) {
   box-shadow: 0 0 0 2px var(--color-text) inset;
 }
 
