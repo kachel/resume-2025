@@ -6,7 +6,8 @@
     <script>
       (function () {
         var saved = localStorage.getItem("selected-theme");
-        if (saved) document.documentElement.setAttribute("data-selected-theme", saved);
+        if (saved)
+          document.documentElement.setAttribute("data-selected-theme", saved);
       })();
     </script>
     <link rel="stylesheet" type="text/css" href="/style.css" />
@@ -167,16 +168,16 @@
         <h3>Pick a theme</h3>
         <div class="theme-switcher">
           <button class="theme-button" data-theme="green" aria-pressed="false">
-            Green
+            Fern
           </button>
           <button class="theme-button" data-theme="blue" aria-pressed="true">
-            Blue
+            Sky
           </button>
           <button class="theme-button" data-theme="purple" aria-pressed="false">
-            Purple
+            Foxglove
           </button>
           <button class="theme-button" data-theme="orange" aria-pressed="false">
-            Orange
+            Monarch
           </button>
         </div>
       </div>
