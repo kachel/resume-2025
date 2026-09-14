@@ -3,6 +3,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kachel's Resume</title>
+    <script>
+      (function () {
+        var saved = localStorage.getItem("selected-theme");
+        if (saved) document.documentElement.setAttribute("data-selected-theme", saved);
+      })();
+    </script>
     <link rel="stylesheet" type="text/css" href="/style.css" />
 
     <link
@@ -32,14 +38,12 @@
   </head>
   <body>
     <header class="header">
-      <div class="logo-container">
-        <!-- <img class="logo" src="./assets/union.svg" alt="" /> -->
-      </div>
+      <div class="logo-container"></div>
       <div class="links-theme-container">
         <div>
           <ul class="links-container">
             <li><a href="#about-me">My Interests</a></li>
-            <li><a href="" class="contact">Contact</a></li>
+            <li><a href="mailto:kjwittig&#64;gmail.com">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -69,25 +73,19 @@
               leading to my love of scripting
             </p>
           </div>
-          <button class="button" aria-label="download cv" id="downloadCV">
-            Download CV
-          </button>
+          <a
+            class="button"
+            id="downloadCV"
+            href="./assets/Kachel-Wittig-Resume-2026-for-website.pdf"
+            download="Kachel-Wittig-Resume.pdf"
+            >Download CV</a
+          >
         </div>
       </div>
       <div class="project-container box">
         <div class="projects-container">
           <h2>Projects</h2>
           <div class="projects-grid">
-            <div class="project-card">
-              <h3>Solar Powered</h3>
-
-              <p>
-                Coming soon!! A project where I host a website with a raspberry
-                pi and power it with a solar panel. No sun? No website.
-              </p>
-              <br />
-              <p>Built with: Go, JavaScript, and AI-assisted development</p>
-            </div>
             <div class="project-card">
               <h3>Ham Zone</h3>
 
@@ -111,6 +109,16 @@
               <br />
               <p>Built with: HTML, CSS, JavaScript</p>
             </div>
+            <div class="project-card project-card--upcoming">
+              <h3>Solar Powered <span class="tag">Coming soon</span></h3>
+
+              <p>
+                A project where I host a website with a raspberry pi and power
+                it with a solar panel. No sun? No website.
+              </p>
+              <br />
+              <p>Built with: Go, JavaScript, and AI-assisted development</p>
+            </div>
           </div>
         </div>
       </div>
@@ -132,7 +140,10 @@
       </div>
       <div class="about-me-container box" id="about-me">
         <div class="about-me-images">
-          <img src="" alt="" />
+          <img
+            src="assets/images/portrait.png"
+            alt="Illustrated Stardew Valley-style portrait of Kachel, wearing a purple and orange striped shirt, with long light brown hair."
+          />
         </div>
         <div class="about-me-info">
           <h2>My Interests</h2>
@@ -177,7 +188,10 @@
         <p>Shoot me a message or see my stuff</p>
 
         <div class="brand-icon-buttons-container">
-          <a href="" aria-label="contact" class="icon-button contact"
+          <a
+            href="mailto:kjwittig&#64;gmail.com"
+            aria-label="email"
+            class="icon-button"
             ><i class="fa-solid fa-envelope" aria-hidden="true"></i
           ></a>
           <a

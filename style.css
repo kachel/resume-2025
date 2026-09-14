@@ -98,25 +98,6 @@ video {
   box-sizing: border-box;
 }
 
-/* :root {
-  --base: #cfcfcf;
-  --text: #1e1e1e;
-  --border: #1e1e1e;
-  --pink: #ffd2f9;
-  --cyan: #83f3ff;
-  --green: #b3ffc7;
-  --purple: #c2c5ff;
-
-
-
-  --ff: "Bricolage Grotesque", sans-serif;
-
-} 
-
-
-
-*/
-
 :root {
   --border-radius: 2px;
 
@@ -157,7 +138,7 @@ video {
 [data-selected-theme="blue"] {
   --color-background: #63b4ff;
   --color-text: #202f39;
-  --color-accent: #2c96f9;
+  --color-accent: #3098f9;
   --ff: "Bricolage Grotesque", sans-serif;
 }
 
@@ -209,14 +190,18 @@ a:is(:hover, :focus-visible) {
 }
 
 button,
+.button,
 .icon-button {
+  display: inline-block;
   font-size: var(--font-size-base);
   color: inherit;
   font-family: var(--ff);
+  text-decoration: none;
   background-color: var(--transparent);
   border-radius: var(--border-radius);
   border: 2px solid var(--color-text);
   padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .icon-button i {
@@ -244,15 +229,6 @@ button,
   background: var(--transparent);
 }
 
-.logo {
-  height: var(--padding-lg);
-  transition: scale 500ms ease-in-out;
-}
-
-.logo:hover {
-  transform: scale(120%);
-}
-
 .accent-1 {
   display: inline-block;
   transform: rotate(-4deg);
@@ -264,11 +240,7 @@ button,
 .accent-1:hover {
   transform: rotate(4deg);
 }
-/*
-.accent-2 {
-  transform: rotate(4deg);
-}
-*/
+
 .links-theme-container {
   display: flex;
   flex-direction: row;
@@ -319,7 +291,7 @@ button,
     font-size: var(--font-size-xl);
   }
 
-  button {
+  .button {
     width: fit-content;
     margin: auto;
   }
@@ -384,12 +356,55 @@ button,
   }
 }
 
+.project-card--upcoming {
+  opacity: 0.75;
+
+  h3 {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.tag {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--color-text);
+  border-radius: var(--border-radius);
+  padding: 0.15rem 0.4rem;
+}
+
 /* ABOUT ME */
 
 .about-me-container {
   padding: var(--padding-lg);
   display: grid;
+  gap: var(--padding-lg);
   place-content: center;
+  justify-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    max-width: 900px;
+    margin-inline: auto;
+  }
+}
+
+.about-me-images {
+  img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--color-text);
+    box-shadow: 7px 6px 0 0 var(--color-text);
+    transform: rotate(3deg);
+  }
 }
 
 .about-me-info {
@@ -507,18 +522,62 @@ button,
 
 .brand-icon-buttons-container {
   margin-block: 1rem;
-  button.icon-button {
+  .icon-button {
     font-size: 24px;
   }
 }
 
-/* BORDERS */
+/* MOTION */
 
-/* .box {
-  
-  border: var(--color-text) 2px solid;
+html,
+body {
+  transition: background-color 200ms ease-out, color 200ms ease-out;
 }
 
-.box + .box {
-  border-top: none;
-} */
+.header,
+.footer {
+  transition: border-color 200ms ease-out;
+}
+
+.project-card {
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.accent-1 {
+  transition: background-color 200ms ease-out, border-color 200ms ease-out,
+    transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.button,
+.icon-button,
+.theme-button {
+  transition: transform 100ms ease-out;
+}
+
+.button:active,
+.icon-button:active,
+.theme-button:active {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .accent-1 {
+    animation: badge-stamp 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes badge-stamp {
+    from {
+      opacity: 0;
+      transform: scale(0.4) rotate(0deg);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.08) rotate(-6deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(-4deg);
+    }
+  }
+}
+
