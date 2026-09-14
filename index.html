@@ -23,9 +23,23 @@
       media="(prefers-color-scheme: dark)"
     />
 
-    <link href="/assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
-    <link href="/assets/font-awesome/css/brands.css" rel="stylesheet" />
-    <link href="/assets/font-awesome/css/solid.css" rel="stylesheet" />
+    <link
+      rel="preload"
+      href="/assets/font-awesome/webfonts/fa-brands-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/font-awesome/webfonts/fa-solid-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link href="/assets/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="/assets/font-awesome/css/brands.min.css" rel="stylesheet" />
+    <link href="/assets/font-awesome/css/solid.min.css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -148,6 +162,9 @@
           <img
             src="assets/images/portrait.png"
             alt="Illustrated Stardew Valley-style portrait of Kachel, wearing a purple and orange striped shirt, with long light brown hair."
+            loading="lazy"
+            width="180"
+            height="180"
           />
         </div>
         <div class="about-me-info">
