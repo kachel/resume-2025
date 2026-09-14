@@ -1,26 +1,3 @@
-// DOWNLOAD CV
-document.getElementById("downloadCV").addEventListener("click", function () {
-  const fileUrl = "./assets/Kachel-Wittig-Resume-2026-for-website.pdf";
-
-  console.log("clicked cv");
-
-  const a = document.createElement("a");
-  a.href = fileUrl;
-  a.target = "_blank";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-});
-
-// EMAIL DECRYPT
-
-const encEmail = "a2p3aXR0aWdAZ21haWwuY29t";
-const forms = document.querySelectorAll(".contact");
-
-forms.forEach((form) => {
-  form.setAttribute("href", "mailto:".concat(atob(encEmail)));
-});
-
 // THEME SWITCHER
 const pressedButtonSelector = '[data-theme][aria-pressed="true"]';
 const defaultTheme = "blue";
