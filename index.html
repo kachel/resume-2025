@@ -66,20 +66,25 @@
         <li><a href="mailto:kjwittig&#64;gmail.com">Contact</a></li>
       </ul>
 
-      <div class="theme-switcher" role="group" aria-label="Pick a theme">
-        <button class="theme-button" data-theme="green" aria-pressed="false">
-          Fern
-        </button>
-        <button class="theme-button" data-theme="blue" aria-pressed="true">
-          Sky
-        </button>
-        <button class="theme-button" data-theme="purple" aria-pressed="false">
-          Foxglove
-        </button>
-        <button class="theme-button" data-theme="orange" aria-pressed="false">
-          Monarch
-        </button>
-      </div>
+      <details class="theme-picker" open>
+        <summary class="theme-picker__toggle" aria-label="Pick a theme">
+          <i class="fa-solid fa-palette" aria-hidden="true"></i>
+        </summary>
+        <div class="theme-switcher" role="group" aria-label="Pick a theme">
+          <button class="theme-button" data-theme="green" aria-pressed="false">
+            Fern
+          </button>
+          <button class="theme-button" data-theme="blue" aria-pressed="true">
+            Sky
+          </button>
+          <button class="theme-button" data-theme="purple" aria-pressed="false">
+            Foxglove
+          </button>
+          <button class="theme-button" data-theme="orange" aria-pressed="false">
+            Monarch
+          </button>
+        </div>
+      </details>
     </header>
 
     <nav class="card-nav" aria-label="Page sections">

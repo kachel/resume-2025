@@ -16,6 +16,20 @@ if (document.fonts && document.fonts.ready) {
 const pressedButtonSelector = '[data-theme][aria-pressed="true"]';
 const defaultTheme = "blue";
 
+// The theme-switcher lives inside a <details> so it can collapse behind
+// a toggle icon on mobile. It defaults to `open` in the markup (so a
+// no-JS visitor always gets a usable, visible switcher at every width —
+// a closed <details> makes its own box 0x0 whenever its non-summary
+// content can't lay out, which is worse than just not collapsing at
+// all). With JS, actively collapse it on mobile as an enhancement, and
+// keep it open at desktop where the toggle icon is hidden by CSS.
+const themePicker = document.querySelector(".theme-picker");
+const syncThemePickerOpen = () => {
+  themePicker.open = window.innerWidth >= 768;
+};
+syncThemePickerOpen();
+window.addEventListener("resize", syncThemePickerOpen);
+
 const applyTheme = (theme) => {
   const target = document.querySelector(`[data-theme="${theme}"]`);
   document.documentElement.setAttribute("data-selected-theme", theme);
@@ -31,6 +45,15 @@ const handleThemeSelection = (event) => {
   if (isPressed !== true) {
     applyTheme(theme);
     localStorage.setItem("selected-theme", theme);
+  }
+
+  // Collapse the mobile theme-picker dropdown after a pick, so the user
+  // doesn't have to close it manually. Guarded to mobile widths only:
+  // at desktop the toggle summary is hidden by CSS, so closing it there
+  // would leave no way to reopen it short of resizing the window.
+  if (window.innerWidth < 768) {
+    const picker = target.closest(".theme-picker");
+    if (picker) picker.open = false;
   }
 };
 

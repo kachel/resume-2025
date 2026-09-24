@@ -269,8 +269,41 @@ button,
   }
 }
 
+.theme-picker {
+  position: relative;
+}
+
+.theme-picker__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: var(--font-size-lg);
+  color: var(--color-accent);
+  background-color: var(--transparent);
+  border: 2px solid var(--color-text);
+  border-radius: var(--border-radius);
+  padding: 0.4rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.theme-picker__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.theme-picker__toggle::marker {
+  content: "";
+}
+
+.theme-picker__toggle:hover,
+.theme-picker__toggle:focus-visible {
+  background: var(--color-text);
+  color: var(--color-background);
+}
+
 .header .theme-switcher {
-  display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
@@ -278,6 +311,45 @@ button,
 .header .theme-button {
   padding: 0.4rem 0.75rem;
   font-size: var(--font-size-sm);
+}
+
+@media (max-width: 767px) {
+  /* Explicit both ways rather than relying on the browser's native
+     closed-<details> hiding, which this engine doesn't apply the way
+     the spec's UA stylesheet describes (it left the panel laid out
+     and hit-testable while closed). */
+  .theme-picker:not([open]) .theme-switcher {
+    display: none;
+  }
+
+  .theme-picker[open] .theme-switcher {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 70;
+    flex-direction: column;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-text);
+    border-radius: var(--border-radius);
+    box-shadow: 7px 6px 0 0 var(--color-text);
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .theme-picker__toggle {
+    display: none;
+  }
+
+  /* Belt-and-suspenders: script.js keeps the <details> `open` at this
+     width (a closed <details> collapses its own box to 0x0 regardless
+     of this display value), and the `open` HTML attribute default
+     covers the no-JS case. This just guards against any other future
+     path that could leave it visually collapsed while open. */
+  .theme-picker .theme-switcher {
+    display: flex !important;
+  }
 }
 
 /* CARD STACK */
@@ -648,6 +720,11 @@ body {
     background-color 200ms ease-out;
 }
 
+.theme-picker__toggle {
+  transition: border-color 200ms ease-out, color 200ms ease-out,
+    background-color 200ms ease-out, transform 100ms ease-out;
+}
+
 .accent-1 {
   transition: background-color 200ms ease-out, border-color 200ms ease-out,
     transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -663,7 +740,8 @@ body {
 .button:active,
 .icon-button:active,
 .theme-button:active,
-.card-nav__button:not(:disabled):active {
+.card-nav__button:not(:disabled):active,
+.theme-picker__toggle:active {
   transform: scale(0.96);
 }
 
