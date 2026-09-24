@@ -99,6 +99,7 @@ video {
 }
 
 :root {
+  --header-h: 80px;
   --border-radius: 2px;
 
   --font-size-sm: 0.75rem;
@@ -112,6 +113,15 @@ video {
   --padding-sm: 0.5rem;
 
   --transparent: rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 560px) {
+  :root {
+    /* Worst-case measured header height across 320-560px (header
+       wraps to 2-4 rows in that range); JS overrides with the exact
+       measured value on every load, this is only the no-JS floor. */
+    --header-h: 170px;
+  }
 }
 
 @media (min-width: 960px) {
@@ -192,7 +202,9 @@ a:is(:hover, :focus-visible) {
 button,
 .button,
 .icon-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-size: var(--font-size-base);
   color: inherit;
   font-family: var(--ff);
@@ -219,14 +231,17 @@ button,
 /* HEADER */
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-
   justify-content: space-between;
-  padding: var(--padding-md) var(--padding-lg);
-  border: 2px solid var(--color-text);
-  background: var(--transparent);
+  gap: var(--padding-sm);
+  padding: var(--padding-sm) var(--padding-lg);
+  border-bottom: 2px solid var(--color-text);
+  background: var(--color-background);
 }
 
 .accent-1 {
@@ -241,15 +256,10 @@ button,
   transform: rotate(4deg);
 }
 
-.links-theme-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .links-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
   a {
     display: inline-flex;
@@ -257,6 +267,108 @@ button,
     min-height: 44px;
     padding-inline: var(--padding-sm);
   }
+}
+
+.header .theme-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.header .theme-button {
+  padding: 0.4rem 0.75rem;
+  font-size: var(--font-size-sm);
+}
+
+/* CARD STACK */
+
+.card-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-stack__item {
+  position: sticky;
+  top: var(--header-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: calc(100svh - var(--header-h));
+  overflow-y: auto;
+  padding: var(--padding-lg);
+  background-color: var(--color-background);
+  border-top: 2px solid var(--color-text);
+  box-shadow: 0 7px 0 0 var(--color-text);
+}
+
+.card-stack__item > * {
+  margin-block: auto;
+}
+
+/* Reserve room so the floating card-nav (bottom-right, JS-only) never
+   overlaps card content. Only needed below 768px, where content spans
+   close to the full viewport width and can run under the nav's
+   footprint; wider viewports keep content well clear of that corner
+   without this, so don't disturb their vertical centering for it. */
+@media (max-width: 767px) {
+  .js .card-stack__item {
+    padding-bottom: calc(var(--padding-lg) + 150px);
+  }
+}
+
+.card-stack__item:nth-child(1) {
+  z-index: 1;
+}
+.card-stack__item:nth-child(2) {
+  z-index: 2;
+}
+.card-stack__item:nth-child(3) {
+  z-index: 3;
+}
+.card-stack__item:nth-child(4) {
+  z-index: 4;
+}
+.card-stack__item:nth-child(5) {
+  z-index: 5;
+}
+
+/* CARD NAV (floating, JS-enhanced) */
+
+.card-nav {
+  display: none;
+  position: fixed;
+  right: var(--padding-md);
+  bottom: var(--padding-md);
+  z-index: 60;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-text);
+  border-radius: var(--border-radius);
+  box-shadow: 7px 6px 0 0 var(--color-text);
+}
+
+.js .card-nav {
+  display: flex;
+}
+
+.card-nav__button {
+  padding: 0.4rem;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+}
+
+.card-nav__button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.card-nav__counter {
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
 }
 
 /* HERO */
@@ -289,7 +401,8 @@ button,
 
 .hero-info {
   display: grid;
-  place-content: center;
+  align-content: start;
+  justify-content: center;
   .medium-text {
     font-size: var(--font-size-xl);
   }
@@ -304,17 +417,30 @@ button,
   margin-top: var(--padding-sm);
 }
 
-/* .hero-image {
-  display: grid;
-  place-content: center;
-  padding: 48px;
-} */
+.specimen-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: var(--padding-sm);
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--color-text);
+    border-radius: var(--border-radius);
+    padding: 0.3rem 0.6rem;
+  }
+}
 
 /* PROJECT */
 
 .project-container {
   display: grid;
-  place-items: center;
+  align-content: start;
+  justify-content: center;
   padding: var(--padding-lg);
 }
 
@@ -387,14 +513,13 @@ button,
   padding: var(--padding-lg);
   display: grid;
   gap: var(--padding-lg);
-  place-content: center;
+  place-content: start;
   justify-items: center;
 
   @media (min-width: 768px) {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto minmax(0, 500px);
+    justify-content: center;
     justify-items: start;
-    max-width: 900px;
-    margin-inline: auto;
   }
 }
 
@@ -406,7 +531,6 @@ button,
     border-radius: var(--border-radius);
     border: 2px solid var(--color-text);
     box-shadow: 7px 6px 0 0 var(--color-text);
-    transform: rotate(3deg);
   }
 }
 
@@ -433,7 +557,8 @@ button,
 .skills-container {
   padding: var(--padding-lg);
   display: grid;
-  place-content: center;
+  align-content: start;
+  justify-content: center;
 
   h2 {
     padding-bottom: var(--padding-md);
@@ -461,22 +586,6 @@ button,
 
 /* THEME SWITCHER */
 
-.switcher-container {
-  display: grid;
-  place-items: center;
-  padding: var(--padding-lg);
-
-  h3 {
-    padding-bottom: var(--padding-sm);
-    font-size: var(--font-size-lg);
-    font-weight: 500;
-
-    @media (min-width: 768px) {
-      text-align: center;
-    }
-  }
-}
-
 .theme-button[aria-pressed="true"] {
   background: var(--color-text);
   color: var(--color-background);
@@ -490,26 +599,13 @@ button,
   box-shadow: 0 0 0 2px var(--color-text) inset;
 }
 
-.theme-switcher {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0.5rem;
-
-  @media (min-width: 786px) {
-    display: flex;
-  }
-}
-
 /* FOOTER */
 
 .footer {
-  background: var(--transparent);
-  padding: var(--padding-lg);
   display: grid;
-  place-content: center;
+  align-content: start;
+  justify-content: center;
   text-align: center;
-
-  border: 2px solid var(--color-text);
 
   h2 {
     text-align: center;
@@ -537,13 +633,19 @@ body {
   transition: background-color 200ms ease-out, color 200ms ease-out;
 }
 
-.header,
-.footer {
-  transition: border-color 200ms ease-out;
+.header {
+  transition: border-color 200ms ease-out, background-color 200ms ease-out;
 }
 
+.card-stack__item,
 .project-card {
-  transition: border-color 200ms ease-out, box-shadow 200ms ease-out;
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out,
+    background-color 200ms ease-out;
+}
+
+.card-nav {
+  transition: border-color 200ms ease-out, box-shadow 200ms ease-out,
+    background-color 200ms ease-out;
 }
 
 .accent-1 {
@@ -553,13 +655,15 @@ body {
 
 .button,
 .icon-button,
-.theme-button {
+.theme-button,
+.card-nav__button {
   transition: transform 100ms ease-out;
 }
 
 .button:active,
 .icon-button:active,
-.theme-button:active {
+.theme-button:active,
+.card-nav__button:not(:disabled):active {
   transform: scale(0.96);
 }
 

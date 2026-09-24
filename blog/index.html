@@ -1,0 +1,110 @@
+<html lang="en" data-selected-theme="blue">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kachel's Blog</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+
+    <link href="assets/images/icon.png" rel="icon" media="(prefers-color-scheme: light)" />
+    <link href="assets/images/icon.png" rel="icon" media="(prefers-color-scheme: dark)" />
+
+    <link href="/assets/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="/assets/font-awesome/css/brands.css" rel="stylesheet" />
+    <link href="/assets/font-awesome/css/solid.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="module" src="./script.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/d20b987249.js" crossorigin="anonymous"></script> -->
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo-container">
+        <!-- <img class="logo" src="./assets/union.svg" alt="" /> -->
+      </div>
+      <div class="links-theme-container">
+        <div>
+          <ul class="links-container">
+            <li><a href="/index.html">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+    <section class="blog-container">
+      <div class="blog-list">
+
+        <article class="blog-entry">
+          <div class="blog-entry-info">
+            <span class="blog-entry-tag">Design Systems</span>
+            <h2 class="blog-entry-title">
+              <a href="/blog/learning-in-public">Learning in Public</a>
+            </h2>
+            <time class="blog-entry-date" datetime="2026-08-18">August 18, 2026</time>
+            <p class="blog-entry-excerpt">Over the course of this summer there have been a series of rolling brown and black outs at my home. I can see first hand how the grid is struggling to keep up with this new energy hungry world. Be it higher temps or data centers, there is a need for more electricity.
+
+This got me thinking about the grid and energy storage. I realized that I have not really thought about chemistry or physics since I was in high school. How better to understand the grid than by relearning the science behind it?
+
+This is the reason that I am putting my science notes out there and learning in public. In the hopes that I can also help tackle this very real problem. 
+
+Here is my three week streak!!</p>
+          </div>
+        </article>
+
+        <article class="blog-entry">
+          <div class="blog-entry-info">
+            <span class="blog-entry-tag">Dev Life</span>
+            <h2 class="blog-entry-title">
+              <a href="/blog/second-entry-slug">What Ham Radio Taught Me About Debugging</a>
+            </h2>
+            <time class="blog-entry-date" datetime="2026-08-03">August 3, 2026</time>
+            <p class="blog-entry-excerpt">Chasing a noisy signal on 40 meters is excellent practice for chasing a flaky test in CI.</p>
+          </div>
+        </article>
+
+       
+
+      </div>
+    </section>
+
+      <div class="switcher-container box">
+        <h3>Pick a theme</h3>
+        <div class="theme-switcher">
+          <button class="theme-button" data-theme="green" aria-pressed="false">Green</button>
+          <button class="theme-button" data-theme="blue" aria-pressed="true">Blue</button>
+          <button class="theme-button" data-theme="purple" aria-pressed="false">Purple</button>
+          <button class="theme-button" data-theme="orange" aria-pressed="false">Orange</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <h2>Let's connect!</h2>
+      <div class="footer-info">
+        <p>Shoot me a message or see my stuff</p>
+
+        <div class="brand-icon-buttons-container">
+          <a href="" aria-label="contact" class="icon-button contact"
+            ><i class="fa-solid fa-envelope" aria-hidden="true"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/kachel-wittig-1a81a325/" aria-label="linkedin" class="icon-button"
+            ><i class="fa-brands fa-linkedin" aria-hidden="true"></i
+          ></a>
+
+          <a href="https://github.com/kachel" aria-label="github" class="icon-button"
+            ><i class="fa-brands fa-square-github" aria-hidden="true"></i
+          ></a>
+
+          <a href="https://codepen.io/kachel-the-decoder" aria-label="codepen" class="icon-button"
+            ><i class="fa-brands fa-codepen" aria-hidden="true"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

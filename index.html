@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" data-selected-theme="blue">
   <head>
     <meta charset="UTF-8" />
@@ -8,6 +9,7 @@
         var saved = localStorage.getItem("selected-theme");
         if (saved)
           document.documentElement.setAttribute("data-selected-theme", saved);
+        document.documentElement.classList.add("js");
       })();
     </script>
     <link rel="stylesheet" type="text/css" href="/style.css" />
@@ -52,38 +54,65 @@
     />
 
     <script type="module" src="./script.js"></script>
-    <!-- <script src="https://kit.fontawesome.com/d20b987249.js" crossorigin="anonymous"></script> -->
   </head>
   <body>
     <header class="header">
-      <div class="logo-container"></div>
-      <div class="links-theme-container">
-        <div>
-          <ul class="links-container">
-            <li>
-              <a href="https://www.linkedin.com/in/kachel-wittig-1a81a325/"
-                >LinkedIn</a
-              >
-            </li>
-            <li><a href="mailto:kjwittig&#64;gmail.com">Contact</a></li>
-          </ul>
-        </div>
+      <ul class="links-container">
+        <li>
+          <a href="https://www.linkedin.com/in/kachel-wittig-1a81a325/"
+            >LinkedIn</a
+          >
+        </li>
+        <li><a href="mailto:kjwittig&#64;gmail.com">Contact</a></li>
+      </ul>
+
+      <div class="theme-switcher" role="group" aria-label="Pick a theme">
+        <button class="theme-button" data-theme="green" aria-pressed="false">
+          Fern
+        </button>
+        <button class="theme-button" data-theme="blue" aria-pressed="true">
+          Sky
+        </button>
+        <button class="theme-button" data-theme="purple" aria-pressed="false">
+          Foxglove
+        </button>
+        <button class="theme-button" data-theme="orange" aria-pressed="false">
+          Monarch
+        </button>
       </div>
     </header>
-    <main class="main">
-      <div class="hero-container box">
+
+    <nav class="card-nav" aria-label="Page sections">
+      <button class="card-nav__button" data-card-prev aria-label="Previous section">
+        <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+      </button>
+      <span class="card-nav__counter">
+        <span data-card-current>1</span> / <span data-card-total>5</span>
+      </span>
+      <button class="card-nav__button" data-card-next aria-label="Next section">
+        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      </button>
+    </nav>
+
+    <main class="card-stack">
+      <section class="card-stack__item hero-container box" id="hero">
         <div class="hero-info">
           <h1>Hello, my name is <span class="accent-1">Kachel</span></h1>
 
           <div class="details">
-            <p class="medium-text">Sales person and Software Writer</p>
-            <p>Skilled in designing, developing, and building relationships</p>
+            <p class="medium-text">
+              Creative front-end dev with 6 years of experience
+            </p>
+            <p>
+              Skilled in designing, developing, and testing responsive web
+              practices
+            </p>
             <p>
               I enjoy taking old systems and giving them a stylistic refresh!
             </p>
             <p>
-              I'm passionate about accessibility, design systems, and user
-              experience 💜
+              I'm passionate about accessibility, design systems, and user joy
+              💜
             </p>
             <p>
               <span>Fun fact: </span>I automated my first sales job (before AI)
@@ -97,9 +126,19 @@
             download="Kachel-Wittig-Resume.pdf"
             >Download CV</a
           >
+
+          <ul class="specimen-row" aria-label="Core skills">
+            <li><i class="fa-brands fa-square-js" aria-hidden="true"></i>JavaScript</li>
+            <li><i class="fa-brands fa-css" aria-hidden="true"></i>CSS</li>
+            <li><i class="fa-brands fa-html5" aria-hidden="true"></i>HTML</li>
+            <li><i class="fa-brands fa-square-figma" aria-hidden="true"></i>Figma</li>
+            <li><i class="fa-brands fa-square-git" aria-hidden="true"></i>Git</li>
+            <li><i class="fa-brands fa-tailwind-css" aria-hidden="true"></i>Tailwind</li>
+          </ul>
         </div>
-      </div>
-      <div class="project-container box">
+      </section>
+
+      <section class="card-stack__item project-container box" id="projects">
         <div class="projects-container">
           <h2>Projects</h2>
           <div class="projects-grid">
@@ -138,8 +177,9 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="skills-container box">
+      </section>
+
+      <section class="card-stack__item skills-container box" id="skills">
         <h2>Skills</h2>
 
         <ul class="skills-grid">
@@ -154,8 +194,9 @@
           <li><i class="fa-brands fa-node"></i>Node</li>
           <li><i class="fa-solid fa-robot"></i>AI Assisted Coding</li>
         </ul>
-      </div>
-      <div class="about-me-container box" id="about-me">
+      </section>
+
+      <section class="card-stack__item about-me-container box" id="about-me">
         <div class="about-me-images">
           <img
             src="assets/images/portrait.png"
@@ -181,61 +222,43 @@
             International Space Station.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div class="switcher-container box">
-        <h3>Pick a theme</h3>
-        <div class="theme-switcher">
-          <button class="theme-button" data-theme="green" aria-pressed="false">
-            Fern
-          </button>
-          <button class="theme-button" data-theme="blue" aria-pressed="true">
-            Sky
-          </button>
-          <button class="theme-button" data-theme="purple" aria-pressed="false">
-            Foxglove
-          </button>
-          <button class="theme-button" data-theme="orange" aria-pressed="false">
-            Monarch
-          </button>
+      <footer class="card-stack__item footer" id="connect">
+        <h2>Let's connect!</h2>
+        <div class="footer-info">
+          <p>Shoot me a message</p>
+
+          <div class="brand-icon-buttons-container">
+            <a
+              href="mailto:kjwittig&#64;gmail.com"
+              aria-label="email"
+              class="icon-button"
+              ><i class="fa-solid fa-envelope" aria-hidden="true"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/kachel-wittig-1a81a325/"
+              aria-label="linkedin"
+              class="icon-button"
+              ><i class="fa-brands fa-linkedin" aria-hidden="true"></i
+            ></a>
+
+            <a
+              href="https://github.com/kachel"
+              aria-label="github"
+              class="icon-button"
+              ><i class="fa-brands fa-square-github" aria-hidden="true"></i
+            ></a>
+
+            <a
+              href="https://codepen.io/kachel-the-decoder"
+              aria-label="codepen"
+              class="icon-button"
+              ><i class="fa-brands fa-codepen" aria-hidden="true"></i
+            ></a>
+          </div>
         </div>
-      </div>
+      </footer>
     </main>
-
-    <footer class="footer">
-      <h2>Let's connect!</h2>
-      <div class="footer-info">
-        <p>Shoot me a message</p>
-
-        <div class="brand-icon-buttons-container">
-          <a
-            href="mailto:kjwittig&#64;gmail.com"
-            aria-label="email"
-            class="icon-button"
-            ><i class="fa-solid fa-envelope" aria-hidden="true"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/kachel-wittig-1a81a325/"
-            aria-label="linkedin"
-            class="icon-button"
-            ><i class="fa-brands fa-linkedin" aria-hidden="true"></i
-          ></a>
-
-          <a
-            href="https://github.com/kachel"
-            aria-label="github"
-            class="icon-button"
-            ><i class="fa-brands fa-square-github" aria-hidden="true"></i
-          ></a>
-
-          <a
-            href="https://codepen.io/kachel-the-decoder"
-            aria-label="codepen"
-            class="icon-button"
-            ><i class="fa-brands fa-codepen" aria-hidden="true"></i
-          ></a>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>
