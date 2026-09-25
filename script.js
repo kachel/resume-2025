@@ -30,11 +30,23 @@ const syncThemePickerOpen = () => {
 syncThemePickerOpen();
 window.addEventListener("resize", syncThemePickerOpen);
 
+const themeColors = {
+  green: "#a2f3c8",
+  blue: "#63b4ff",
+  purple: "#e2a4ff",
+  orange: "#fa9c61",
+};
+
 const applyTheme = (theme) => {
   const target = document.querySelector(`[data-theme="${theme}"]`);
   document.documentElement.setAttribute("data-selected-theme", theme);
   document.querySelector(pressedButtonSelector).setAttribute("aria-pressed", false);
   target.setAttribute("aria-pressed", true);
+
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeColorMeta && themeColors[theme]) {
+    themeColorMeta.setAttribute("content", themeColors[theme]);
+  }
 };
 
 const handleThemeSelection = (event) => {
@@ -85,6 +97,9 @@ if (cards.length && currentEl && totalEl) {
 
   let activeIndex = 0;
   let cardTargets = [];
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
   // scrollIntoView is unreliable here: a sticky card's getBoundingClientRect
   // reflects its current *stuck* position, not where it needs to scroll to
@@ -128,7 +143,10 @@ if (cards.length && currentEl && totalEl) {
     // whole duration, so a second quick click recomputes the same
     // target instead of advancing further.
     setActive(clamped);
-    window.scrollTo({ top: cardTargets[clamped], behavior: "smooth" });
+    window.scrollTo({
+      top: cardTargets[clamped],
+      behavior: prefersReducedMotion ? "instant" : "smooth",
+    });
     if (updateHash) {
       history.pushState(null, "", `#${cards[clamped].id}`);
     }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kachel's Resume</title>
+    <meta name="theme-color" content="#63b4ff" />
     <script>
       (function () {
         var saved = localStorage.getItem("selected-theme");
@@ -56,6 +57,8 @@
     <script type="module" src="./script.js"></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <header class="header">
       <ul class="links-container">
         <li>
@@ -103,7 +106,7 @@
       </button>
     </nav>
 
-    <main class="card-stack">
+    <main class="card-stack" id="main-content">
       <section class="card-stack__item hero-container box" id="hero">
         <div class="hero-info">
           <h1>Hello, my name is <span class="accent-1">Kachel</span></h1>
@@ -183,16 +186,16 @@
         <h2>Skills</h2>
 
         <ul class="skills-grid">
-          <li><i class="fa-brands fa-square-js"></i>JavaScript</li>
-          <li><i class="fa-brands fa-css"></i>CSS</li>
-          <li><i class="fa-brands fa-html5"></i>HTML</li>
-          <li><i class="fa-brands fa-square-git"></i>Git</li>
-          <li><i class="fa-brands fa-square-figma"></i>Figma</li>
-          <li><i class="fa-brands fa-tailwind-css"></i>Tailwind</li>
-          <li><i class="fa-solid fa-droplet"></i>Elixir</li>
-          <li><i class="fa-brands fa-phoenix-framework"></i>Phoenix</li>
-          <li><i class="fa-brands fa-node"></i>Node</li>
-          <li><i class="fa-solid fa-robot"></i>AI Assisted Coding</li>
+          <li><i class="fa-brands fa-square-js" aria-hidden="true"></i>JavaScript</li>
+          <li><i class="fa-brands fa-css" aria-hidden="true"></i>CSS</li>
+          <li><i class="fa-brands fa-html5" aria-hidden="true"></i>HTML</li>
+          <li><i class="fa-brands fa-square-git" aria-hidden="true"></i>Git</li>
+          <li><i class="fa-brands fa-square-figma" aria-hidden="true"></i>Figma</li>
+          <li><i class="fa-brands fa-tailwind-css" aria-hidden="true"></i>Tailwind</li>
+          <li><i class="fa-solid fa-droplet" aria-hidden="true"></i>Elixir</li>
+          <li><i class="fa-brands fa-phoenix-framework" aria-hidden="true"></i>Phoenix</li>
+          <li><i class="fa-brands fa-node" aria-hidden="true"></i>Node</li>
+          <li><i class="fa-solid fa-robot" aria-hidden="true"></i>AI Assisted Coding</li>
         </ul>
       </section>
 

@@ -228,6 +228,23 @@ button,
   color: var(--color-background);
 }
 
+/* SKIP LINK */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--padding-sm);
+  z-index: 100;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-text);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+}
+
+.skip-link:focus-visible {
+  top: var(--padding-sm);
+}
+
 /* HEADER */
 
 .header {
@@ -362,6 +379,7 @@ button,
 .card-stack__item {
   position: sticky;
   top: var(--header-h);
+  scroll-margin-top: var(--header-h);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -431,6 +449,11 @@ button,
   min-width: 44px;
   min-height: 44px;
   justify-content: center;
+}
+
+.card-nav__button:not(:disabled):is(:hover, :focus-visible) {
+  background: var(--color-text);
+  color: var(--color-background);
 }
 
 .card-nav__button:disabled {
