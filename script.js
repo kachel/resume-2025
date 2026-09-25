@@ -1,34 +1,15 @@
-// HEADER HEIGHT (sticky offset for card stack)
-const headerEl = document.querySelector(".header");
-const setHeaderHeight = () => {
-  document.documentElement.style.setProperty(
-    "--header-h",
-    `${headerEl.getBoundingClientRect().height}px`
-  );
-};
-setHeaderHeight();
-window.addEventListener("resize", setHeaderHeight);
-if (document.fonts && document.fonts.ready) {
-  document.fonts.ready.then(setHeaderHeight);
-}
-
 // THEME SWITCHER
 const pressedButtonSelector = '[data-theme][aria-pressed="true"]';
 const defaultTheme = "blue";
 
 // The theme-switcher lives inside a <details> so it can collapse behind
-// a toggle icon on mobile. It defaults to `open` in the markup (so a
-// no-JS visitor always gets a usable, visible switcher at every width —
+// a palette-icon toggle at every width. It defaults to `open` in the
+// markup (so a no-JS visitor always gets a usable, visible switcher —
 // a closed <details> makes its own box 0x0 whenever its non-summary
 // content can't lay out, which is worse than just not collapsing at
-// all). With JS, actively collapse it on mobile as an enhancement, and
-// keep it open at desktop where the toggle icon is hidden by CSS.
+// all). With JS, actively collapse it as an enhancement.
 const themePicker = document.querySelector(".theme-picker");
-const syncThemePickerOpen = () => {
-  themePicker.open = window.innerWidth >= 768;
-};
-syncThemePickerOpen();
-window.addEventListener("resize", syncThemePickerOpen);
+themePicker.open = false;
 
 const themeColors = {
   green: "#a2f3c8",
@@ -59,14 +40,10 @@ const handleThemeSelection = (event) => {
     localStorage.setItem("selected-theme", theme);
   }
 
-  // Collapse the mobile theme-picker dropdown after a pick, so the user
-  // doesn't have to close it manually. Guarded to mobile widths only:
-  // at desktop the toggle summary is hidden by CSS, so closing it there
-  // would leave no way to reopen it short of resizing the window.
-  if (window.innerWidth < 768) {
-    const picker = target.closest(".theme-picker");
-    if (picker) picker.open = false;
-  }
+  // Collapse the theme-picker dropdown after a pick, so the user doesn't
+  // have to close it manually.
+  const picker = target.closest(".theme-picker");
+  if (picker) picker.open = false;
 };
 
 const setInitialTheme = () => {
@@ -110,7 +87,20 @@ if (cards.length && currentEl && totalEl) {
     if (nextBtn) nextBtn.disabled = index === cards.length - 1;
   };
 
-  const goTo = (index, updateHash) => {
+  // A deliberate, single-purpose entrance for cards reached via explicit
+  // navigation (buttons/keyboard) — a small settle that echoes the
+  // physical "index card" material this system is built from. Not used
+  // on the initial hash landing or on cards activated by ordinary scroll
+  // (the IntersectionObserver below), so it stays a discrete moment tied
+  // to an intentional action rather than a scroll-triggered effect.
+  const settleCard = (card) => {
+    if (prefersReducedMotion) return;
+    card.classList.remove("is-settling");
+    void card.offsetWidth;
+    card.classList.add("is-settling");
+  };
+
+  const goTo = (index, updateHash, settle) => {
     const clamped = Math.max(0, Math.min(cards.length - 1, index));
     // Update state immediately rather than waiting for the
     // IntersectionObserver to catch up once the (possibly animated)
@@ -122,6 +112,15 @@ if (cards.length && currentEl && totalEl) {
       behavior: prefersReducedMotion ? "instant" : "smooth",
       block: "start",
     });
+    if (settle) {
+      settleCard(cards[clamped]);
+      // scrollIntoView only moves the viewport — it never moves keyboard/AT
+      // focus, so without this a screen-reader user pressing "Next" hears
+      // nothing and stays put on the button they just pressed. Move focus
+      // to the section itself (tabindex="-1" in the markup) so its heading
+      // gets announced. preventScroll since we already handled scrolling.
+      cards[clamped].focus({ preventScroll: true });
+    }
     if (updateHash) {
       history.pushState(null, "", `#${cards[clamped].id}`);
     }
@@ -141,17 +140,24 @@ if (cards.length && currentEl && totalEl) {
 
   cards.forEach((card) => observer.observe(card));
 
-  if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1, true));
-  if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1, true));
+  if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1, true, true));
+  if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1, true, true));
 
   document.addEventListener("keydown", (event) => {
-    if (document.activeElement !== document.body) return;
+    // Arrow-key section nav only fires when focus is "at rest" — on the
+    // body (nothing focused) or on a card section itself (where nav just
+    // moved focus). Skip it while focus is on a real control (link,
+    // button, form field) so arrow keys don't hijack that control's own
+    // behavior.
+    const active = document.activeElement;
+    const atRest = active === document.body || active.classList.contains("card-stack__item");
+    if (!atRest) return;
     if (event.key === "ArrowDown" || event.key === "PageDown") {
       event.preventDefault();
-      goTo(activeIndex + 1, true);
+      goTo(activeIndex + 1, true, true);
     } else if (event.key === "ArrowUp" || event.key === "PageUp") {
       event.preventDefault();
-      goTo(activeIndex - 1, true);
+      goTo(activeIndex - 1, true, true);
     }
   });
 

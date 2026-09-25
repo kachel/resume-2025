@@ -99,7 +99,6 @@ video {
 }
 
 :root {
-  --header-h: 80px;
   --border-radius: 2px;
 
   --font-size-sm: 0.75rem;
@@ -111,17 +110,6 @@ video {
   --padding-lg: 2rem;
   --padding-md: 1rem;
   --padding-sm: 0.5rem;
-
-  --transparent: rgba(255, 255, 255, 0.35);
-}
-
-@media (max-width: 560px) {
-  :root {
-    /* Worst-case measured header height across 320-560px (header
-       wraps to 2-4 rows in that range); JS overrides with the exact
-       measured value on every load, this is only the no-JS floor. */
-    --header-h: 170px;
-  }
 }
 
 @media (min-width: 960px) {
@@ -142,6 +130,12 @@ video {
   --color-background: #a2f3c8;
   --color-text: #164238;
   --color-accent: #33fc98;
+  --color-grid-line: #29f186;
+  /* Opaque stand-in for the old 35%-white paper-wash (white blended over
+     this theme's --color-background) — same tint, but solid so the card's
+     background grid pattern can't show through buttons/cards/the portrait
+     frame sitting on top of it. */
+  --color-surface: #c3f7db;
   --ff: "Bricolage Grotesque", sans-serif;
 }
 
@@ -149,6 +143,8 @@ video {
   --color-background: #63b4ff;
   --color-text: #202f39;
   --color-accent: #3098f9;
+  --color-grid-line: #1884ea;
+  --color-surface: #9aceff;
   --ff: "Bricolage Grotesque", sans-serif;
 }
 
@@ -156,6 +152,8 @@ video {
   --color-background: #e2a4ff;
   --color-text: #3c2e3c;
   --color-accent: #f06efc;
+  --color-grid-line: #c341ff;
+  --color-surface: #eac4ff;
   --ff: "Bricolage Grotesque", sans-serif;
 }
 
@@ -163,6 +161,8 @@ video {
   --color-background: #fa9c61;
   --color-text: #1e1e24;
   --color-accent: #f57e46;
+  --color-grid-line: #ea6e21;
+  --color-surface: #fcbf98;
   --ff: "Bricolage Grotesque", sans-serif;
 }
 
@@ -209,7 +209,7 @@ button,
   color: inherit;
   font-family: var(--ff);
   text-decoration: none;
-  background-color: var(--transparent);
+  background-color: var(--color-surface);
   border-radius: var(--border-radius);
   border: 2px solid var(--color-text);
   padding: 0.5rem 1rem;
@@ -248,9 +248,6 @@ button,
 /* HEADER */
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -298,7 +295,7 @@ button,
   min-height: 44px;
   font-size: var(--font-size-lg);
   color: var(--color-accent);
-  background-color: var(--transparent);
+  background-color: var(--color-surface);
   border: 2px solid var(--color-text);
   border-radius: var(--border-radius);
   padding: 0.4rem;
@@ -330,43 +327,27 @@ button,
   font-size: var(--font-size-sm);
 }
 
-@media (max-width: 767px) {
-  /* Explicit both ways rather than relying on the browser's native
-     closed-<details> hiding, which this engine doesn't apply the way
-     the spec's UA stylesheet describes (it left the panel laid out
-     and hit-testable while closed). */
-  .theme-picker:not([open]) .theme-switcher {
-    display: none;
-  }
-
-  .theme-picker[open] .theme-switcher {
-    display: flex;
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    right: 0;
-    z-index: 70;
-    flex-direction: column;
-    background-color: var(--color-background);
-    border: 2px solid var(--color-text);
-    border-radius: var(--border-radius);
-    box-shadow: 7px 6px 0 0 var(--color-text);
-    padding: 0.5rem;
-  }
+/* Explicit both ways rather than relying on the browser's native
+   closed-<details> hiding, which this engine doesn't apply the way
+   the spec's UA stylesheet describes (it left the panel laid out
+   and hit-testable while closed). The palette-icon toggle is now the
+   theme switcher's one presentation at every width, not just mobile. */
+.theme-picker:not([open]) .theme-switcher {
+  display: none;
 }
 
-@media (min-width: 768px) {
-  .theme-picker__toggle {
-    display: none;
-  }
-
-  /* Belt-and-suspenders: script.js keeps the <details> `open` at this
-     width (a closed <details> collapses its own box to 0x0 regardless
-     of this display value), and the `open` HTML attribute default
-     covers the no-JS case. This just guards against any other future
-     path that could leave it visually collapsed while open. */
-  .theme-picker .theme-switcher {
-    display: flex !important;
-  }
+.theme-picker[open] .theme-switcher {
+  display: flex;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 70;
+  flex-direction: column;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-text);
+  border-radius: var(--border-radius);
+  box-shadow: 7px 6px 0 0 var(--color-text);
+  padding: 0.5rem;
 }
 
 /* CARD STACK */
@@ -377,14 +358,62 @@ button,
 }
 
 .card-stack__item {
-  scroll-margin-top: var(--header-h);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100svh - var(--header-h));
+  min-height: 100svh;
   padding: var(--padding-lg);
   background-color: var(--color-background);
+  /* Faint graph-paper grid — on-brand for the field-notebook system.
+     The two repeating-linear-gradients just re-paint the background color
+     over a solid grid-line fill so only a hairline of the line color
+     shows through at each 16px seam; the two plain linear-gradients lay
+     that hairline down on each axis. */
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 1.3333333333333333px,
+      var(--color-background) 1.3333333333333333px,
+      var(--color-background) 4px,
+      transparent 4px,
+      transparent 5.333333333333333px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 1.3333333333333333px,
+      var(--color-background) 1.3333333333333333px,
+      var(--color-background) 4px,
+      transparent 4px,
+      transparent 5.333333333333333px
+    ),
+    linear-gradient(
+      to bottom,
+      var(--color-grid-line) 0.48px,
+      transparent 0.48px
+    ),
+    linear-gradient(to right, var(--color-grid-line) 0.48px, transparent 0.48px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    16px 16px,
+    16px 16px;
+  background-position:
+    0 0,
+    0 0,
+    0 -0.16px,
+    -0.16px 0;
   border-top: 2px solid var(--color-text);
+}
+
+/* Sections are focused programmatically (card-nav/keyboard navigation
+   moves focus here so screen readers announce the new section) rather
+   than via mouse, so :focus rather than :focus-visible is correct —
+   there's no click path to trigger it. */
+.card-stack__item:focus {
+  outline: 3px solid var(--color-text);
+  outline-offset: -3px;
 }
 
 .card-stack__item > * {
@@ -548,7 +577,7 @@ button,
 }
 
 .project-card {
-  background-color: var(--transparent);
+  background-color: var(--color-surface);
   padding: var(--padding-sm);
   border-radius: var(--border-radius);
   border: 2px solid var(--color-text);
@@ -603,6 +632,10 @@ button,
     width: 180px;
     height: 180px;
     object-fit: cover;
+    /* portrait.png has transparent regions around the illustration; back
+       them with a solid surface so the section's grid pattern can't show
+       through the frame. */
+    background-color: var(--color-surface);
     border-radius: var(--border-radius);
     border: 2px solid var(--color-text);
     box-shadow: 7px 6px 0 0 var(--color-text);
@@ -705,31 +738,44 @@ button,
 
 html,
 body {
-  transition: background-color 200ms ease-out, color 200ms ease-out;
+  transition:
+    background-color 200ms ease-out,
+    color 200ms ease-out;
 }
 
 .header {
-  transition: border-color 200ms ease-out, background-color 200ms ease-out;
+  transition:
+    border-color 200ms ease-out,
+    background-color 200ms ease-out;
 }
 
 .card-stack__item,
 .project-card {
-  transition: border-color 200ms ease-out, box-shadow 200ms ease-out,
+  transition:
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out,
     background-color 200ms ease-out;
 }
 
 .card-nav {
-  transition: border-color 200ms ease-out, box-shadow 200ms ease-out,
+  transition:
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out,
     background-color 200ms ease-out;
 }
 
 .theme-picker__toggle {
-  transition: border-color 200ms ease-out, color 200ms ease-out,
-    background-color 200ms ease-out, transform 100ms ease-out;
+  transition:
+    border-color 200ms ease-out,
+    color 200ms ease-out,
+    background-color 200ms ease-out,
+    transform 100ms ease-out;
 }
 
 .accent-1 {
-  transition: background-color 200ms ease-out, border-color 200ms ease-out,
+  transition:
+    background-color 200ms ease-out,
+    border-color 200ms ease-out,
     transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -767,5 +813,17 @@ body {
       transform: scale(1) rotate(-4deg);
     }
   }
-}
 
+  .card-stack__item.is-settling {
+    animation: card-settle 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes card-settle {
+    from {
+      transform: translateY(18px) rotate(-1deg);
+    }
+    to {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+}
