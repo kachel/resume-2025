@@ -152,6 +152,53 @@ if (cards.length && currentEl && totalEl) {
     }
   };
 
+  // Page scroll must never advance between cards on its own — only the
+  // nav buttons/keyboard shortcuts (goTo) may change the active card.
+  // Wheel/touch scrolling should still work *inside* a card whose content
+  // overflows (Hero, Projects). We can't rely on CSS overscroll-behavior
+  // for this: it only stops chaining out of an element that's already
+  // scrolling, but a card with no overflow (Skills, About, Connect) never
+  // starts scrolling in the first place, so the gesture falls straight
+  // through to the page. Instead, intercept the gesture before the
+  // browser decides where to apply it, and only let it through when the
+  // nearest card still has scroll room left in that direction.
+  const blockCardAdvance = (event, deltaY) => {
+    if (!deltaY) return;
+    const card = event.target.closest(".card-stack__item");
+    if (card) {
+      const atTop = card.scrollTop <= 0;
+      const atBottom = card.scrollTop + card.clientHeight >= card.scrollHeight - 1;
+      if (deltaY < 0 && !atTop) return;
+      if (deltaY > 0 && !atBottom) return;
+    }
+    event.preventDefault();
+  };
+
+  window.addEventListener(
+    "wheel",
+    (event) => blockCardAdvance(event, event.deltaY),
+    { passive: false }
+  );
+
+  let lastTouchY = null;
+  window.addEventListener(
+    "touchstart",
+    (event) => {
+      lastTouchY = event.touches[0].clientY;
+    },
+    { passive: true }
+  );
+  window.addEventListener(
+    "touchmove",
+    (event) => {
+      const currentY = event.touches[0].clientY;
+      const deltaY = lastTouchY - currentY;
+      lastTouchY = currentY;
+      blockCardAdvance(event, deltaY);
+    },
+    { passive: false }
+  );
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
