@@ -96,34 +96,9 @@ if (cards.length && currentEl && totalEl) {
   totalEl.textContent = cards.length;
 
   let activeIndex = 0;
-  let cardTargets = [];
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
-
-  // scrollIntoView is unreliable here: a sticky card's getBoundingClientRect
-  // reflects its current *stuck* position, not where it needs to scroll to
-  // become the active (topmost) card, so the browser sometimes decides no
-  // scrolling is needed when navigating to an earlier, currently-covered
-  // card. Compute real document-flow scroll targets instead, from each
-  // card's own height (unaffected by sticky) rather than its live rect.
-  const measureCardTargets = () => {
-    const stackTop =
-      document.querySelector(".card-stack").getBoundingClientRect().top +
-      window.scrollY;
-    let cumulative = stackTop;
-    cardTargets = cards.map((card) => {
-      const target = cumulative;
-      cumulative += card.offsetHeight;
-      return target;
-    });
-  };
-
-  measureCardTargets();
-  window.addEventListener("resize", measureCardTargets);
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(measureCardTargets);
-  }
 
   const setActive = (index) => {
     activeIndex = index;
@@ -143,61 +118,14 @@ if (cards.length && currentEl && totalEl) {
     // whole duration, so a second quick click recomputes the same
     // target instead of advancing further.
     setActive(clamped);
-    window.scrollTo({
-      top: cardTargets[clamped],
+    cards[clamped].scrollIntoView({
       behavior: prefersReducedMotion ? "instant" : "smooth",
+      block: "start",
     });
     if (updateHash) {
       history.pushState(null, "", `#${cards[clamped].id}`);
     }
   };
-
-  // Page scroll must never advance between cards on its own — only the
-  // nav buttons/keyboard shortcuts (goTo) may change the active card.
-  // Wheel/touch scrolling should still work *inside* a card whose content
-  // overflows (Hero, Projects). We can't rely on CSS overscroll-behavior
-  // for this: it only stops chaining out of an element that's already
-  // scrolling, but a card with no overflow (Skills, About, Connect) never
-  // starts scrolling in the first place, so the gesture falls straight
-  // through to the page. Instead, intercept the gesture before the
-  // browser decides where to apply it, and only let it through when the
-  // nearest card still has scroll room left in that direction.
-  const blockCardAdvance = (event, deltaY) => {
-    if (!deltaY) return;
-    const card = event.target.closest(".card-stack__item");
-    if (card) {
-      const atTop = card.scrollTop <= 0;
-      const atBottom = card.scrollTop + card.clientHeight >= card.scrollHeight - 1;
-      if (deltaY < 0 && !atTop) return;
-      if (deltaY > 0 && !atBottom) return;
-    }
-    event.preventDefault();
-  };
-
-  window.addEventListener(
-    "wheel",
-    (event) => blockCardAdvance(event, event.deltaY),
-    { passive: false }
-  );
-
-  let lastTouchY = null;
-  window.addEventListener(
-    "touchstart",
-    (event) => {
-      lastTouchY = event.touches[0].clientY;
-    },
-    { passive: true }
-  );
-  window.addEventListener(
-    "touchmove",
-    (event) => {
-      const currentY = event.touches[0].clientY;
-      const deltaY = lastTouchY - currentY;
-      lastTouchY = currentY;
-      blockCardAdvance(event, deltaY);
-    },
-    { passive: false }
-  );
 
   const observer = new IntersectionObserver(
     (entries) => {
