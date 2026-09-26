@@ -509,6 +509,7 @@ button,
   justify-content: center;
   .medium-text {
     font-size: var(--font-size-xl);
+    font-style: italic;
   }
 
   .button {
@@ -586,6 +587,10 @@ button,
 
   p {
     max-width: 65ch;
+  }
+
+  .built-with {
+    font-style: italic;
   }
 }
 
