@@ -596,13 +596,13 @@ button,
 
 .project-card--upcoming {
   opacity: 0.75;
+}
 
-  h3 {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+.project-card h3:has(.tag) {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .tag {
