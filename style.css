@@ -584,6 +584,9 @@ button,
   border: 2px solid var(--color-text);
   box-shadow: 7px 6px 0 0 var(--color-text);
   margin-bottom: var(--padding-sm);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
   p {
     max-width: 65ch;
@@ -591,6 +594,74 @@ button,
 
   .built-with {
     font-style: italic;
+  }
+}
+
+.project-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: var(--padding-sm);
+  border: 2px solid var(--color-text);
+  border-radius: var(--border-radius);
+  background-color: var(--color-background);
+}
+
+.project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: var(--padding-sm);
+}
+
+/* The primary link stretches over the whole card so any click on it
+   follows the link; the secondary button sits above that overlay. */
+.project-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.project-card__secondary {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card:has(.project-card__link) {
+  cursor: pointer;
+}
+
+.project-card:has(.project-card__link):hover:not(
+    :has(.project-card__secondary:hover)
+  )
+  .project-card__link {
+  background: var(--color-text);
+  color: var(--color-background);
+}
+
+.project-card:has(.project-card__link:focus-visible) {
+  outline: 3px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-card:has(.project-card__link) {
+    transition:
+      transform 150ms ease-out,
+      box-shadow 150ms ease-out,
+      border-color 200ms ease-out,
+      background-color 200ms ease-out;
+  }
+
+  .project-card:has(.project-card__link):hover:not(
+      :has(.project-card__secondary:hover)
+    ) {
+    transform: translate(-3px, -3px);
+    box-shadow: 10px 9px 0 0 var(--color-text);
   }
 }
 
