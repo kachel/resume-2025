@@ -101,6 +101,11 @@ video {
 :root {
   --border-radius: 2px;
 
+  /* Grid hairline width = exactly one physical pixel. Anything thinner
+     gets dropped by the browser on lower-density screens, which made the
+     background grid vanish on some displays and zoom levels. */
+  --grid-px: 1px;
+
   --font-size-sm: 0.75rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.333rem;
@@ -110,6 +115,18 @@ video {
   --padding-lg: 2rem;
   --padding-md: 1rem;
   --padding-sm: 0.5rem;
+}
+
+@media (min-resolution: 2dppx) {
+  :root {
+    --grid-px: 0.5px;
+  }
+}
+
+@media (min-resolution: 3dppx) {
+  :root {
+    --grid-px: 0.34px;
+  }
 }
 
 @media (min-width: 960px) {
@@ -361,7 +378,9 @@ button,
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100svh;
+  /* Full screen on normal displays, but capped so extra-large monitors
+     don't get a thousand pixels of empty space under short sections. */
+  min-height: min(100svh, 50rem);
   padding: var(--padding-lg);
   background-color: var(--color-background);
   /* Faint graph-paper grid — on-brand for the field-notebook system.
@@ -390,10 +409,14 @@ button,
     ),
     linear-gradient(
       to bottom,
-      var(--color-grid-line) 0.48px,
-      transparent 0.48px
+      var(--color-grid-line) var(--grid-px),
+      transparent var(--grid-px)
     ),
-    linear-gradient(to right, var(--color-grid-line) 0.48px, transparent 0.48px);
+    linear-gradient(
+      to right,
+      var(--color-grid-line) var(--grid-px),
+      transparent var(--grid-px)
+    );
   background-size:
     100% 100%,
     100% 100%,
@@ -545,11 +568,17 @@ button,
 .project-container {
   display: grid;
   align-content: start;
-  justify-content: center;
+  /* A fixed single track (not an auto one) so the screenshots' intrinsic
+     size can't widen the section past the viewport. */
+  grid-template-columns: minmax(0, 1fr);
   padding: var(--padding-lg);
 }
 
 .projects-container {
+  width: 100%;
+  max-width: clamp(52rem, 60vw, 90rem);
+  justify-self: center;
+
   h2 {
     padding-bottom: var(--padding-md);
     font-size: var(--font-size-xl);
@@ -564,7 +593,7 @@ button,
 .projects-grid {
   display: grid;
   grid-gap: var(--padding-sm);
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 
   h3 {
     padding-bottom: var(--padding-sm);
@@ -573,7 +602,7 @@ button,
   }
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -594,6 +623,7 @@ button,
 
   .built-with {
     font-style: italic;
+    margin-top: 1rem;
   }
 }
 
@@ -693,7 +723,8 @@ button,
   padding: var(--padding-lg);
   display: grid;
   gap: var(--padding-lg);
-  place-content: start;
+  align-content: center;
+  justify-content: start;
   justify-items: center;
 
   @media (min-width: 768px) {
@@ -741,7 +772,7 @@ button,
 .skills-container {
   padding: var(--padding-lg);
   display: grid;
-  align-content: start;
+  align-content: center;
   justify-content: center;
 
   h2 {
@@ -787,7 +818,7 @@ button,
 
 .footer {
   display: grid;
-  align-content: start;
+  align-content: center;
   justify-content: center;
   text-align: center;
 
